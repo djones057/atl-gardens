@@ -8,6 +8,8 @@ import { plantingCalendar } from "@/data/plantingCalendar";
 import { ArrowRight, MapPin, CheckCircle2, Clock, Ban, HelpCircle } from "lucide-react";
 import type { Garden } from "@/types";
 
+const featuredGarden = gardens.find((g) => g.id === "g1") ?? gardens[0];
+
 function AvailabilityBadge({ garden }: { garden: Garden }) {
   const isVerified = garden.verified !== false;
   if (!isVerified) return <span className={styles.badge} data-status="Unverified">Listing</span>;
@@ -28,66 +30,109 @@ function AvailabilityBadge({ garden }: { garden: Garden }) {
 export default function Home() {
   const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
   const thisMonth = plantingCalendar.find((m) => m.month === currentMonth);
-  const availableCount = gardens.filter((g) => g.plotAvailability === "Available").length;
+  const neighborhoodCount = new Set(gardens.map((g) => g.neighborhood)).size;
   const [hero, ...side] = gardens.slice(0, 3);
 
   return (
     <>
       {/* ─── HERO ─── */}
       <section className={styles.hero}>
-        <div className={styles.heroText}>
-          <span className={styles.heroLabel}>Atlanta metro · Zone 7b / 8a</span>
-          <h1 className={styles.heroTitle}>
-            Find your<br />
-            plot in<br />
-            <span>Atlanta.</span>
-          </h1>
-          <p className={styles.heroSubtitle}>
-            A free directory of {gardens.length} community gardens, a local planting
-            calendar, and trusted gear picks — all in one place.
-          </p>
-          <div className={styles.ctaRow}>
-            <Link href="/gardens" className={styles.btnPrimary}>
-              Find a Garden <ArrowRight size={17} />
-            </Link>
-            <Link href="/guides/planting-calendar" className={styles.btnText}>
-              What to Plant in {currentMonth} →
-            </Link>
-          </div>
-        </div>
+        <div className={`shell ${styles.heroGrid}`}>
+          <div className={styles.heroText}>
+            <div className={styles.heroEyebrow}>
+              <span className={styles.heroEyebrowDot} aria-hidden="true" />
+              A directory · {gardens.length} gardens · {neighborhoodCount} neighborhoods
+            </div>
 
-        <div className={styles.heroMedia}>
-          <Image
-            src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1400&auto=format&fit=crop"
-            alt="Atlanta community garden"
-            fill
-            priority
-            sizes="50vw"
-            className={styles.heroImg}
-          />
-          <div className={styles.heroMediaVeil} aria-hidden="true" />
+            <h1 className={styles.heroTitle}>
+              Every community garden<br />
+              in <em>Atlanta</em>, <span className={styles.heroAmp}>&amp;</span><br />
+              how to grow there.
+            </h1>
+
+            <p className={styles.heroLede}>
+              From Kirkwood to Cascade — a free, hand-kept directory of the plots,
+              collectives, and urban farms shaping the city. Find a bed to rent, a crew
+              to join, or a Saturday to volunteer.
+            </p>
+
+            <form action="/gardens" method="get" className={styles.search}>
+              <div className={styles.searchField}>
+                <label htmlFor="hero-neighborhood">Neighborhood</label>
+                <input
+                  id="hero-neighborhood"
+                  name="neighborhood"
+                  placeholder="Kirkwood, East Atlanta…"
+                />
+              </div>
+              <div className={styles.searchField}>
+                <label htmlFor="hero-looking">Looking for</label>
+                <select id="hero-looking" name="looking">
+                  <option value="">Any</option>
+                  <option value="open-plots">Open plots</option>
+                  <option value="volunteer">Volunteer days</option>
+                  <option value="kids">Kids programs</option>
+                  <option value="workshops">Workshops</option>
+                </select>
+              </div>
+              <button type="submit" className={styles.searchBtn}>
+                Search →
+              </button>
+            </form>
+
+            <dl className={styles.heroStats}>
+              <div className={styles.heroStat}>
+                <dt className={styles.heroStatNum}>{gardens.length}</dt>
+                <dd className={styles.heroStatLabel}>gardens listed</dd>
+              </div>
+              <div className={styles.heroStat}>
+                <dt className={styles.heroStatNum}>{neighborhoodCount}</dt>
+                <dd className={styles.heroStatLabel}>neighborhoods</dd>
+              </div>
+              <div className={styles.heroStat}>
+                <dt className={styles.heroStatNum}>12</dt>
+                <dd className={styles.heroStatLabel}>months of tips</dd>
+              </div>
+            </dl>
+          </div>
+
+          <Link
+            href={`/gardens/${featuredGarden.id}`}
+            className={styles.featured}
+            aria-label={`Garden of the week: ${featuredGarden.name}`}
+          >
+            <div className={styles.featuredPh} aria-hidden="true">
+              {featuredGarden.imageUrl && (
+                <Image
+                  src={featuredGarden.imageUrl}
+                  alt=""
+                  fill
+                  sizes="(min-width: 960px) 40vw, 100vw"
+                  className={styles.featuredImg}
+                  priority
+                />
+              )}
+              <span className={styles.featuredPhCaption}>
+                [ photo — {featuredGarden.name} ]
+              </span>
+            </div>
+            <div className={styles.featuredCard}>
+              <span className={styles.featuredTag}>Garden of the week</span>
+              <h3 className={styles.featuredName}>{featuredGarden.name}</h3>
+              <p className={styles.featuredLoc}>
+                {featuredGarden.neighborhood}
+                {featuredGarden.foundingYear && ` · est. ${featuredGarden.foundingYear}`}
+              </p>
+              <div className={styles.featuredRow}>
+                <span className={styles.featuredHours}>
+                  {featuredGarden.visitingHours ?? "Contact garden for hours"}
+                </span>
+                <span className={styles.featuredArrow} aria-hidden="true">→</span>
+              </div>
+            </div>
+          </Link>
         </div>
       </section>
-
-      {/* ─── STATS ─── */}
-      <div className={`container ${styles.statsWrap}`}>
-        <div className={styles.statsRule} />
-        <dl className={styles.stats}>
-          <div className={styles.statItem}>
-            <dt className={styles.statNum}>{gardens.length}+</dt>
-            <dd className={styles.statLabel}>Community Gardens</dd>
-          </div>
-          <div className={styles.statItem}>
-            <dt className={styles.statNum}>{availableCount}</dt>
-            <dd className={styles.statLabel}>Open for Applications</dd>
-          </div>
-          <div className={styles.statItem}>
-            <dt className={styles.statNum}>12</dt>
-            <dd className={styles.statLabel}>Months of Local Tips</dd>
-          </div>
-        </dl>
-        <div className={styles.statsRule} />
-      </div>
 
       {/* ─── THIS MONTH ─── */}
       {thisMonth && (

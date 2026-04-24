@@ -1,177 +1,295 @@
 /* ─────────────────────────────────────────
-   HERO — full-bleed split
+   HERO — editorial split
 ───────────────────────────────────────── */
 .hero {
+  padding: 80px 0 64px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.heroGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 88vh;
-  overflow: hidden;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: end;
 }
 
 .heroText {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 1.75rem;
-  padding: 5rem 4rem 5rem max(1.5rem, calc(50vw - 600px + 1.5rem));
-  background: var(--bg-color);
+  gap: 28px;
 }
 
-.heroLabel {
-  font-size: 0.72rem;
-  font-weight: 700;
+.heroEyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--ink-faint);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--text-secondary);
-  border-top: 2px solid var(--text-primary);
-  padding-top: 0.75rem;
-  display: block;
-  width: fit-content;
+}
+
+.heroEyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--clay);
+  flex: none;
 }
 
 .heroTitle {
-  font-size: clamp(3.25rem, 6vw, 6rem);
-  line-height: 1.0;
-  color: var(--text-primary);
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: clamp(56px, 7.5vw, 108px);
+  line-height: 0.95;
   letter-spacing: -0.02em;
+  color: var(--ink);
+  font-weight: 400;
 }
 
-.heroTitle span {
-  color: var(--primary);
+.heroTitle em {
+  font-style: italic;
+  color: var(--moss);
 }
 
-.heroSubtitle {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  line-height: 1.65;
-  max-width: 420px;
+.heroAmp {
+  font-style: italic;
+  color: var(--clay);
 }
 
-.ctaRow {
+.heroLede {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 54ch;
+}
+
+.search {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr auto;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: 14px;
+  overflow: hidden;
+  max-width: 640px;
+  box-shadow: 0 1px 0 var(--paper-2), 6px 6px 0 var(--paper-2);
+}
+
+.searchField {
+  padding: 14px 18px;
+  border-right: 1px solid var(--rule);
   display: flex;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
 }
 
-.btnPrimary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--primary);
-  color: #fff;
-  padding: 0.85rem 2rem;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: 1rem;
+.searchField label {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.searchField input,
+.searchField select {
+  all: unset;
+  font: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  width: 100%;
+  min-width: 0;
+}
+
+.searchField select {
+  cursor: pointer;
+}
+
+.searchBtn {
+  background: var(--moss);
+  color: var(--paper);
+  border: 0;
+  padding: 0 28px;
+  font: inherit;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
   transition: var(--transition);
-  white-space: nowrap;
 }
 
-.btnPrimary:hover {
-  background: var(--primary-hover);
-  transform: translateY(-2px);
+.searchBtn:hover {
+  background: var(--ink);
 }
 
-.btnText {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--primary);
+.heroStats {
+  display: flex;
+  gap: 28px;
+  margin-top: 4px;
+}
+
+.heroStat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.heroStatNum {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 22px;
+  color: var(--moss);
+  line-height: 1;
+  font-weight: 400;
+}
+
+.heroStatLabel {
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+/* Featured "Garden of the week" card */
+.featured {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  aspect-ratio: 4 / 5;
+  background: var(--moss-wash);
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  padding: 24px;
+  overflow: hidden;
   text-decoration: none;
   transition: var(--transition);
 }
 
-.btnText:hover {
-  color: var(--primary-hover);
+.featured:hover {
+  transform: translateY(-2px);
 }
 
-.heroMedia {
-  position: relative;
-  overflow: hidden;
-  margin-right: max(0rem, calc(50vw - 600px + 1.5rem));
-}
-
-.heroImg {
-  object-fit: cover;
-  object-position: center;
-}
-
-.heroMediaVeil {
+.featuredPh {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(250, 249, 246, 0.18) 0%, transparent 30%);
+  background: repeating-linear-gradient(
+    135deg,
+    oklch(0.78 0.05 130) 0 8px,
+    oklch(0.82 0.04 130) 8px 16px
+  );
 }
 
-@media (max-width: 768px) {
-  .hero {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-  .heroText {
-    padding: 4rem 1.5rem 3rem;
-    order: 2;
-  }
-  .heroMedia {
-    order: 1;
-    height: 50vw;
-    min-height: 260px;
-  }
+.featuredImg {
+  object-fit: cover;
 }
 
-
-/* ─────────────────────────────────────────
-   STATS — editorial numbers
-───────────────────────────────────────── */
-.statsWrap {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+.featuredPhCaption {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  color: oklch(0.35 0.04 140);
+  letter-spacing: 0.08em;
+  pointer-events: none;
+  opacity: 0;
 }
 
-.statsRule {
-  border: none;
-  border-top: 1px solid var(--text-primary);
-  opacity: 0.15;
-  margin: 0;
+/* Only show the mono caption if no image rendered */
+.featuredPh:not(:has(img)) .featuredPhCaption {
+  opacity: 1;
 }
 
-.stats {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 3rem 0;
-  gap: 2rem;
+.featuredCard {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: 12px;
+  padding: 18px 20px;
 }
 
-.statItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.statNum {
-  font-family: var(--font-outfit), sans-serif;
-  font-size: clamp(3.5rem, 6vw, 5.5rem);
-  font-weight: 700;
-  line-height: 1;
-  color: var(--primary);
-  letter-spacing: -0.03em;
-  margin-bottom: 0.5rem;
-}
-
-.statLabel {
-  font-size: 0.8rem;
-  font-weight: 600;
+.featuredTag {
+  position: absolute;
+  top: -12px;
+  left: 16px;
+  background: var(--clay);
+  color: var(--paper);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-secondary);
 }
 
-@media (max-width: 480px) {
-  .stats {
-    flex-direction: column;
-    gap: 2.5rem;
-    padding: 2.5rem 0;
+.featuredName {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 28px;
+  line-height: 1.05;
+  margin-top: 4px;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.featuredLoc {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 6px;
+}
+
+.featuredRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--rule);
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+.featuredHours {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  letter-spacing: 0.04em;
+}
+
+.featuredArrow {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 22px;
+  color: var(--moss);
+  transition: transform 200ms ease;
+}
+
+.featured:hover .featuredArrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 960px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .featured {
+    aspect-ratio: 5 / 4;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    padding: 48px 0 40px;
+  }
+  .search {
+    grid-template-columns: 1fr;
+  }
+  .searchField {
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .searchBtn {
+    padding: 14px;
+  }
+  .heroStats {
+    flex-wrap: wrap;
+    gap: 20px;
   }
 }
 

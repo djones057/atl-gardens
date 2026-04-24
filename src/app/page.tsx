@@ -1,9 +1,6 @@
 import { Fragment } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
-import { products as shedProducts } from "@/lib/potting-shed-data";
-import ProductCard from "@/components/ProductCard";
-import { ArrowRight } from "lucide-react";
 
 type DirTag = { label: string; variant?: "open" | "full" };
 type DirEntry = {
@@ -23,6 +20,60 @@ const DIR_ENTRIES: DirEntry[] = [
   { idx: "007", name: "Grant Park Victory Garden", meta: ["Grant Park", "Heirloom seeds"], tags: [{ label: "Volunteers" }] },
   { idx: "008", name: "West End Roots", meta: ["West End", "Teaching garden"], tags: [{ label: "Plots open" }] },
   { idx: "009", name: "Lakewood Orchard", meta: ["Lakewood", "Fruit trees"], tags: [{ label: "Harvest days" }] },
+];
+
+type Pick = {
+  id: string;
+  category: string;
+  name: string;
+  description: string;
+  price: string;
+  href: string;
+  cta: string;
+  phLabel: string;
+};
+
+const PICKS: Pick[] = [
+  {
+    id: "hori-hori",
+    category: "For · transplanting",
+    name: "Japanese hori-hori knife",
+    description: "Doubles as trowel, weeder, and root saw. The one tool everyone ends up borrowing.",
+    price: "$34",
+    href: "https://www.amazon.com/dp/B0002YV2NQ?tag=atlgardens-20",
+    cta: "Shop on Amazon →",
+    phLabel: "[ hori-hori knife ]",
+  },
+  {
+    id: "neem-oil",
+    category: "For · pest pressure",
+    name: "Cold-pressed neem oil, 16oz",
+    description: "Squash bugs show up in June. Spray at dusk, once a week, and pray.",
+    price: "$18",
+    href: "https://www.amazon.com/dp/B004QAWGIO?tag=atlgardens-20",
+    cta: "Shop on Amazon →",
+    phLabel: "[ neem oil ]",
+  },
+  {
+    id: "uga-soil-test",
+    category: "For · spring prep",
+    name: "UGA soil-test kit",
+    description: "Mail-in through the county extension. Know your pH before you plant a thing.",
+    price: "$12",
+    href: "https://aesl.ces.uga.edu/soiltest123/Georgia.asp",
+    cta: "Order from UGA →",
+    phLabel: "[ soil test kit ]",
+  },
+  {
+    id: "clemson-okra",
+    category: "For · May sowing",
+    name: "Clemson Spineless okra",
+    description: "The Southern standard. Heat-loving, forgiving, and absurdly productive by August.",
+    price: "$4",
+    href: "https://sowtrueseed.com/products/okra-clemson-spineless",
+    cta: "Buy from Sow True →",
+    phLabel: "[ seed pack — okra ]",
+  },
 ];
 
 type CellState = "empty" | "plant" | "harvest" | "both";
@@ -328,25 +379,53 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── THE POTTING SHED ─── */}
-      <section className={`container ${styles.shed}`}>
-        <div className={styles.shedHeader}>
-          <div>
-            <span className={styles.sectionLabel}>The Potting Shed</span>
-            <h2 className={styles.shedTitle}>Gear We Trust</h2>
-            <p className={styles.shedSubtitle}>
-              Curated for Atlanta&rsquo;s climate and community gardens.
+      {/* ─── 03 / SEASONAL PICKS ─── */}
+      <section id="picks" className={styles.sec}>
+        <div className="shell">
+          <div className={styles.secHead}>
+            <div>
+              <div className={styles.secNum}>03 / Seasonal picks</div>
+              <h2 className={styles.secTitle}>
+                Gear we&rsquo;d <em>actually</em> lug to the plot.
+              </h2>
+            </div>
+            <p className={styles.secIntro}>
+              Honestly-chosen tools and supplies for this month&rsquo;s garden jobs. We earn
+              a small cut when you shop — it keeps the directory free and independent.
             </p>
           </div>
-          <Link href="/potting-shed" className={styles.viewAll}>
-            Browse The Potting Shed <ArrowRight size={14} />
-          </Link>
-        </div>
 
-        <div className={styles.shedGrid}>
-          {shedProducts.slice(0, 6).map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
+          <div className={styles.picks}>
+            {PICKS.map((p) => (
+              <article key={p.id} className={styles.pick}>
+                <div className={styles.pickImg} aria-hidden="true">
+                  <span className={styles.pickImgLabel}>{p.phLabel}</span>
+                </div>
+                <div className={styles.pickBody}>
+                  <div className={styles.pickCategory}>{p.category}</div>
+                  <h4 className={styles.pickName}>{p.name}</h4>
+                  <p className={styles.pickDesc}>{p.description}</p>
+                </div>
+                <div className={styles.pickFoot}>
+                  <b className={styles.pickPrice}>{p.price}</b>
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="sponsored nofollow noopener noreferrer"
+                    className={styles.pickCta}
+                  >
+                    {p.cta}
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className={styles.affDisclosure}>
+            Disclosure — Some links in this section are affiliate links. We only list
+            things we&rsquo;d hand to a friend on their first day at the plot. Nothing is
+            sponsored.
+          </div>
         </div>
       </section>
     </>

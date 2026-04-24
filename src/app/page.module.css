@@ -680,6 +680,128 @@
 
 
 /* ─────────────────────────────────────────
+   03 / SEASONAL PICKS
+───────────────────────────────────────── */
+.picks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.pick {
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  background: var(--paper);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pickImg {
+  position: relative;
+  aspect-ratio: 1;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--clay-wash) 0 6px,
+    oklch(0.92 0.03 55) 6px 12px
+  );
+  border-bottom: 1px solid var(--rule);
+}
+
+.pickImgLabel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--clay);
+  pointer-events: none;
+}
+
+.pickBody {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pickCategory {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.pickName {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 20px;
+  line-height: 1.15;
+  margin: 6px 0 8px;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.pickDesc {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+.pickFoot {
+  margin-top: auto;
+  padding: 14px 18px;
+  border-top: 1px dashed var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.pickPrice {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--ink);
+}
+
+.pickCta {
+  color: var(--moss);
+  transition: color 0.15s;
+}
+
+.pickCta:hover {
+  color: var(--ink);
+}
+
+.affDisclosure {
+  margin-top: 24px;
+  padding: 14px 18px;
+  background: var(--moss-wash);
+  border: 1px dashed var(--moss);
+  border-radius: 10px;
+  font-size: 12px;
+  color: var(--moss);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 960px) {
+  .picks {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .picks {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ─────────────────────────────────────────
    SHARED LABELS
 ───────────────────────────────────────── */
 .sectionLabel {

@@ -13,7 +13,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Atlanta Community Gardens | Grow & Connect",
+  title: "ATL Community Gardens",
   description: "Discover community gardens across Atlanta. Find plots, connect with local gardeners, and get the best gear for your gardening journey.",
 };
 

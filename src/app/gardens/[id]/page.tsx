@@ -52,8 +52,29 @@ export default async function GardenDetail({ params }: { params: Promise<{ id: s
 
           <div className={styles.section}>
             <h2>About this Garden</h2>
+            {garden.foundingYear && <p className={styles.founded}>Established in {garden.foundingYear}</p>}
             <p className={styles.description}>{garden.description}</p>
           </div>
+
+          {(garden.visitingHours || garden.membershipCost) && (
+            <div className={styles.section}>
+              <h2>Visitor & Member Info</h2>
+              <div className={styles.infoGrid}>
+                {garden.visitingHours && (
+                  <div className={styles.infoCard}>
+                    <strong>Visiting Hours</strong>
+                    <p>{garden.visitingHours}</p>
+                  </div>
+                )}
+                {garden.membershipCost && (
+                  <div className={styles.infoCard}>
+                    <strong>Membership Cost</strong>
+                    <p>{garden.membershipCost}</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
 
           <div className={styles.section}>
             <h2>Amenities & Features</h2>
@@ -66,6 +87,19 @@ export default async function GardenDetail({ params }: { params: Promise<{ id: s
               ))}
             </ul>
           </div>
+
+          {garden.rules && garden.rules.length > 0 && (
+            <div className={styles.section}>
+              <h2>Garden Rules</h2>
+              <ul className={styles.rulesList}>
+                {garden.rules.map((rule, i) => (
+                  <li key={i} className={styles.ruleItem}>
+                    • {rule}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         <div className={styles.sidebar}>

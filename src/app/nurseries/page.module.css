@@ -105,3 +105,52 @@
   color: var(--primary-hover);
   text-decoration: underline;
 }
+
+.ctaSection {
+  margin-top: 2rem;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(45, 90, 39, 0.05) 0%, rgba(212, 163, 115, 0.15) 100%);
+  border-color: var(--secondary);
+}
+
+@media (min-width: 768px) {
+  .ctaSection {
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-between;
+  }
+}
+
+.ctaContent h2 {
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.ctaContent p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 600px;
+}
+
+.ctaButton {
+  background: var(--primary);
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.ctaButton:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}

@@ -13,6 +13,94 @@
   font-size: 1.1rem;
   color: var(--text-secondary);
   line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.searchContainer {
+  margin-top: 2rem;
+}
+
+.searchWrapper {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 1.25rem 1.5rem 1.25rem 3.5rem;
+  font-size: 1.2rem;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-full);
+  outline: none;
+  transition: var(--transition);
+  background: var(--glass-bg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.searchInput:focus {
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(45, 90, 39, 0.15);
+}
+
+.resultsCount {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding-left: 1rem;
+}
+
+.contentLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .contentLayout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.mapContainer {
+  width: 100%;
+  height: 400px;
+  background: var(--glass-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+  position: sticky;
+  top: 100px;
+}
+
+@media (min-width: 1024px) {
+  .mapContainer {
+    width: 40%;
+    height: calc(100vh - 150px);
+  }
+}
+
+.listContainer {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .listContainer {
+    width: 60%;
+  }
 }
 
 .grid {
@@ -20,4 +108,28 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
   padding-bottom: 4rem;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 4rem 0 8rem;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+
+.clearButton {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.clearButton:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
 }

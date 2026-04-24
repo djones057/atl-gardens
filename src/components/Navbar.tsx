@@ -9,8 +9,8 @@ export default function Navbar() {
     <header className={styles.header}>
       <nav className={`container glass-panel ${styles.nav}`}>
         <Link href="/" className={styles.logo}>
-          <Leaf className={styles.logoIcon} />
-          <span>ATL Gardens</span>
+          <Leaf className={styles.logoIcon} aria-hidden="true" />
+          <span>ATL Community Gardens</span>
         </Link>
         <div className={styles.links}>
           <Link href="/gardens" className={styles.link}>Directory</Link>

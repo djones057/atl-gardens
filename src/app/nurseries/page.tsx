@@ -41,6 +41,19 @@ export default function NurseriesSpotlight() {
           </div>
         ))}
       </div>
+
+      <div className={`glass-panel ${styles.ctaSection}`}>
+        <div className={styles.ctaContent}>
+          <h2>Are you a local nursery or garden center?</h2>
+          <p>
+            Join our Recommended Partners program to reach thousands of urban farmers 
+            and community gardeners across the Atlanta metro area.
+          </p>
+        </div>
+        <a href="mailto:partnerships@atlgardens.com" className={styles.ctaButton}>
+          Partner With Us
+        </a>
+      </div>
     </div>
   );
 }

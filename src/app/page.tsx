@@ -30,6 +30,26 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Social Proof Stats Banner */}
+      <section className={styles.statsBanner}>
+        <div className={styles.statsContainer}>
+          <div className={styles.statItem}>
+            <span className={styles.statNumber}>15+</span>
+            <span className={styles.statLabel}>Community Gardens</span>
+          </div>
+          <div className={styles.statDivider}></div>
+          <div className={styles.statItem}>
+            <span className={styles.statNumber}>500+</span>
+            <span className={styles.statLabel}>Active Plots</span>
+          </div>
+          <div className={styles.statDivider}></div>
+          <div className={styles.statItem}>
+            <span className={styles.statNumber}>100%</span>
+            <span className={styles.statLabel}>Locally Grown</span>
+          </div>
+        </div>
+      </section>
+
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>Featured Gardens</h2>

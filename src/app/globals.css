@@ -16,7 +16,7 @@
   --radius-lg: 16px;
   --radius-full: 9999px;
   
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: all 200ms ease-out;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -49,8 +49,16 @@ body {
   color: var(--text-primary);
   background: var(--bg-color);
   font-family: var(--font-inter), sans-serif;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessibility: Global Focus Styles */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 h1, h2, h3, h4, h5, h6 {

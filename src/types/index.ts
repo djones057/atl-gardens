@@ -9,6 +9,10 @@ export interface Garden {
   amenities: string[];
   imageUrl: string;
   website?: string;
+  visitingHours?: string;
+  membershipCost?: string;
+  rules?: string[];
+  foundingYear?: number;
 }
 
 export interface AffiliateProduct {

@@ -1,102 +1,71 @@
+/* ─────────────────────────────────────────
+   HERO — full-bleed split
+───────────────────────────────────────── */
 .hero {
-  position: relative;
-  padding: 7rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 88vh;
   overflow: hidden;
+}
+
+.heroText {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  text-align: center;
-  border-radius: var(--radius-lg);
-  margin: 2rem 0 4rem;
-  min-height: 480px;
-  background-image:
-    linear-gradient(
-      135deg,
-      rgba(18, 28, 22, 0.72) 0%,
-      rgba(45, 90, 39, 0.55) 55%,
-      rgba(30, 57, 42, 0.78) 100%
-    ),
-    url("https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1800&auto=format&fit=crop");
-  background-size: cover;
-  background-position: center;
-  box-shadow: var(--glass-shadow);
+  gap: 1.75rem;
+  padding: 5rem 4rem 5rem max(1.5rem, calc(50vw - 600px + 1.5rem));
+  background: var(--bg-color);
 }
 
-.heroBackdrop {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, rgba(233, 196, 106, 0.15) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.heroContent {
-  position: relative;
-  z-index: 10;
-  max-width: 760px;
-}
-
-.heroEyebrow {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 600;
+.heroLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--accent);
-  background: rgba(18, 28, 22, 0.5);
-  padding: 0.4rem 1rem;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(233, 196, 106, 0.4);
-  margin-bottom: 1.5rem;
+  letter-spacing: 0.18em;
+  color: var(--text-secondary);
+  border-top: 2px solid var(--text-primary);
+  padding-top: 0.75rem;
+  display: block;
+  width: fit-content;
 }
 
 .heroTitle {
-  font-size: 3.75rem;
-  line-height: 1.05;
-  color: #fff;
-  margin-bottom: 1.25rem;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
+  font-size: clamp(3.25rem, 6vw, 6rem);
+  line-height: 1.0;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
 .heroTitle span {
-  color: var(--accent);
+  color: var(--primary);
 }
 
 .heroSubtitle {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.92);
-  margin-bottom: 2.25rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.5;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 420px;
 }
 
-@media (max-width: 640px) {
-  .hero {
-    padding: 4rem 1.5rem;
-    min-height: 380px;
-  }
-  .heroTitle {
-    font-size: 2.5rem;
-  }
-  .heroSubtitle {
-    font-size: 1.05rem;
-  }
-}
-
-.ctaGroup {
+.ctaRow {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   background: var(--primary);
   color: #fff;
-  padding: 0.8rem 2rem;
+  padding: 0.85rem 2rem;
   border-radius: var(--radius-full);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  transition: var(--transition);
+  white-space: nowrap;
 }
 
 .btnPrimary:hover {
@@ -104,44 +73,72 @@
   transform: translateY(-2px);
 }
 
-.btnSecondary {
-  background: var(--bg-color);
-  color: var(--primary);
-  border: 2px solid var(--primary);
-  padding: 0.8rem 2rem;
-  border-radius: var(--radius-full);
+.btnText {
+  font-size: 0.9rem;
   font-weight: 600;
-  font-size: 1.1rem;
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition);
 }
 
-.btnSecondary:hover {
-  background: rgba(45, 90, 39, 0.05);
-  transform: translateY(-2px);
+.btnText:hover {
+  color: var(--primary-hover);
 }
 
-/* Stats Banner */
-.statsBanner {
-  background: var(--primary);
-  color: #fff;
-  padding: 3rem 0;
-  margin-bottom: 4rem;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--glass-shadow);
+.heroMedia {
+  position: relative;
+  overflow: hidden;
 }
 
-.statsContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  gap: 2.5rem;
+.heroImg {
+  object-fit: cover;
+  object-position: center;
 }
 
-@media (min-width: 768px) {
-  .statsContainer {
-    flex-direction: row;
-    gap: 0;
+.heroMediaVeil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(250, 249, 246, 0.18) 0%, transparent 30%);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
   }
+  .heroText {
+    padding: 4rem 1.5rem 3rem;
+    order: 2;
+  }
+  .heroMedia {
+    order: 1;
+    height: 50vw;
+    min-height: 260px;
+  }
+}
+
+
+/* ─────────────────────────────────────────
+   STATS — editorial numbers
+───────────────────────────────────────── */
+.statsWrap {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.statsRule {
+  border: none;
+  border-top: 1px solid var(--text-primary);
+  opacity: 0.15;
+  margin: 0;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 3rem 0;
+  gap: 2rem;
 }
 
 .statItem {
@@ -151,178 +148,424 @@
   text-align: center;
 }
 
-.statNumber {
-  font-size: 3rem;
+.statNum {
+  font-family: var(--font-outfit), sans-serif;
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
   font-weight: 700;
-  color: var(--accent);
+  line-height: 1;
+  color: var(--primary);
+  letter-spacing: -0.03em;
   margin-bottom: 0.5rem;
-  font-family: var(--font-outfit);
 }
 
 .statLabel {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  font-weight: 500;
-}
-
-.statDivider {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .statDivider {
-    display: block;
-    width: 2px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.2);
-  }
-}
-
-.section {
-  padding: 4rem 0;
-}
-
-.sectionHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 2.5rem;
-}
-
-.sectionTitle {
-  font-size: 2.5rem;
-  color: var(--text-primary);
-}
-
-.sectionLink {
-  color: var(--primary);
-  font-weight: 600;
-}
-
-.sectionLink:hover {
-  text-decoration: underline;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-/* This Month in the Garden */
-.monthSection {
-  padding: 1rem 0 3rem;
-}
-
-.monthCard {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(233, 196, 106, 0.12) 100%);
-  border: 1px solid rgba(233, 196, 106, 0.35);
-  border-radius: var(--radius-lg);
-  padding: 2.5rem;
-  box-shadow: var(--glass-shadow);
-}
-
-.monthHeader {
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.monthBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: rgba(45, 90, 39, 0.1);
-  color: var(--primary);
-  padding: 0.35rem 0.9rem;
-  border-radius: var(--radius-full);
   font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 1rem;
-}
-
-.monthTitle {
-  font-size: 2.25rem;
-  color: var(--text-primary);
-  margin-bottom: 0.75rem;
-}
-
-.monthTitle span {
-  color: var(--primary);
-}
-
-.monthSubtitle {
-  font-size: 1.05rem;
+  letter-spacing: 0.12em;
   color: var(--text-secondary);
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .stats {
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 2.5rem 0;
+  }
+}
+
+
+/* ─────────────────────────────────────────
+   SHARED LABELS
+───────────────────────────────────────── */
+.sectionLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+  border-top: 2px solid currentColor;
+  padding-top: 0.65rem;
+  display: block;
+}
+
+
+/* ─────────────────────────────────────────
+   THIS MONTH
+───────────────────────────────────────── */
+.month {
+  position: relative;
+  padding-top: 4rem;
+  padding-bottom: 5rem;
+  overflow: hidden;
+}
+
+.monthWatermark {
+  position: absolute;
+  top: -0.15em;
+  right: -0.05em;
+  font-family: var(--font-outfit), sans-serif;
+  font-size: clamp(7rem, 18vw, 17rem);
+  font-weight: 700;
+  color: var(--primary);
+  opacity: 0.04;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.04em;
 }
 
 .monthGrid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  grid-template-columns: 2fr 3fr;
+  gap: 4rem;
+  align-items: start;
+  margin-top: 2.5rem;
 }
 
-@media (min-width: 768px) {
-  .monthGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.monthColumn {
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: var(--radius-md);
-  padding: 1.25rem 1.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-.monthColumn h3 {
+.monthLeft {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--primary);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 0.85rem;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-.monthColumn ul {
+.monthHeading {
+  font-size: clamp(2.5rem, 4vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.monthSummary {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.monthLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+  transition: var(--transition);
+  margin-top: 0.5rem;
+}
+
+.monthLink:hover {
+  gap: 0.7rem;
+}
+
+.monthRight {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.monthGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.monthGroupLabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--primary);
+  border-top: 1px solid var(--primary);
+  padding-top: 0.6rem;
+}
+
+.monthItems {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.monthColumn li {
-  font-size: 0.95rem;
+.monthItems li {
+  font-size: 0.9rem;
   color: var(--text-primary);
-  padding-left: 1rem;
+  line-height: 1.4;
+  padding-left: 0.85rem;
   position: relative;
 }
 
-.monthColumn li::before {
-  content: "•";
-  color: var(--secondary);
+.monthItems li::before {
+  content: "—";
   position: absolute;
   left: 0;
-  font-weight: 700;
+  color: var(--secondary);
+  font-size: 0.7rem;
+  top: 0.15em;
 }
 
-.monthCta {
-  display: block;
-  text-align: center;
-  color: var(--primary);
+@media (max-width: 900px) {
+  .monthGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .monthRight {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .monthRight {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* ─────────────────────────────────────────
+   FEATURED GARDENS
+───────────────────────────────────────── */
+.gardens {
+  padding-bottom: 4rem;
+}
+
+.gardensHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+}
+
+.viewAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  font-size: 1.05rem;
-  padding: 0.5rem;
+  color: var(--primary);
+  transition: var(--transition);
 }
 
-.monthCta:hover {
-  text-decoration: underline;
+.viewAll:hover {
+  gap: 0.55rem;
+}
+
+.gardensGrid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+/* Hero garden card */
+.gardenHero {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  transition: var(--transition);
+  background: #fff;
+}
+
+.gardenHero:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.gardenHeroImgWrap {
+  position: relative;
+  height: 280px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: rgba(45, 90, 39, 0.08);
+}
+
+.gardenHeroImgEl {
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.gardenHero:hover .gardenHeroImgEl {
+  transform: scale(1.03);
+}
+
+.gardenHeroBody {
+  padding: 1.75rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+}
+
+.gardenHeroName {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.gardenHeroLoc {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.gardenHeroDesc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.gardenHeroLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-top: 0.25rem;
+  transition: var(--transition);
+}
+
+.gardenHero:hover .gardenHeroLink {
+  gap: 0.6rem;
+}
+
+/* Side garden cards */
+.gardenSide {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.gardenCard {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  text-decoration: none;
+  transition: var(--transition);
+  min-height: 0;
+  flex: 1;
+}
+
+.gardenCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+}
+
+.gardenCardNum {
+  font-family: var(--font-outfit), sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--primary);
+  opacity: 0.25;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  padding-top: 0.15rem;
+}
+
+.gardenCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.gardenCardName {
+  font-size: 1.1rem;
+  line-height: 1.25;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.gardenCardLoc {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.gardenCardAmenities {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  opacity: 0.75;
+  margin-top: 0.15rem;
+}
+
+.gardenCardThumb {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: rgba(45, 90, 39, 0.06);
+}
+
+.gardenCardThumbImg {
+  object-fit: cover;
+}
+
+/* Availability badge — shared */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  width: fit-content;
+}
+
+.badge[data-status="Available"] {
+  background: rgba(45, 90, 39, 0.1);
+  color: var(--primary);
+}
+
+.badge[data-status="Waitlist"] {
+  background: rgba(212, 163, 115, 0.15);
+  color: #a0622a;
+}
+
+.badge[data-status="Full"] {
+  background: rgba(180, 50, 50, 0.1);
+  color: #c0392b;
+}
+
+.badge[data-status="Unknown"],
+.badge[data-status="Unverified"] {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-secondary);
+}
+
+@media (max-width: 900px) {
+  .gardensGrid {
+    grid-template-columns: 1fr;
+  }
+  .gardenHeroImgWrap {
+    height: 220px;
+  }
+  .gardenSide {
+    flex-direction: row;
+  }
+  .gardenCard {
+    flex: 1;
+  }
+}
+
+@media (max-width: 560px) {
+  .gardenSide {
+    flex-direction: column;
+  }
 }

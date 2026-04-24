@@ -1,66 +1,50 @@
-import Image from "next/image";
 import styles from "./page.module.css";
+import Link from "next/link";
+import { gardens } from "@/data/gardens";
+import { products } from "@/data/products";
+import GardenCard from "@/components/GardenCard";
+import AffiliateCarousel from "@/components/AffiliateCarousel";
 
 export default function Home() {
+  const featuredGardens = gardens.slice(0, 3);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="container">
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>
+            Grow with <span>Atlanta</span>
+          </h1>
+          <p className={styles.heroSubtitle}>
+            Discover community gardens in your neighborhood, connect with local growers, 
+            and get the best gear for your sustainable urban agriculture journey.
           </p>
+          <div className={styles.ctaGroup}>
+            <Link href="/gardens" className={styles.btnPrimary}>
+              Find a Garden
+            </Link>
+            <Link href="/nurseries" className={styles.btnSecondary}>
+              Local Nurseries
+            </Link>
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>Featured Gardens</h2>
+          <Link href="/gardens" className={styles.sectionLink}>
+            View All Gardens
+          </Link>
         </div>
-      </main>
+        <div className={styles.grid}>
+          {featuredGardens.map((garden) => (
+            <GardenCard key={garden.id} garden={garden} />
+          ))}
+        </div>
+      </section>
+
+      <AffiliateCarousel products={products} />
     </div>
   );
 }

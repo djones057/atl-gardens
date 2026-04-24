@@ -1,0 +1,42 @@
+.header {
+  position: sticky;
+  top: 1rem;
+  z-index: 50;
+  width: 100%;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-full);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-outfit), sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+
+.logoIcon {
+  color: var(--accent);
+}
+
+.links {
+  display: flex;
+  gap: 2rem;
+}
+
+.link {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.link:hover {
+  color: var(--primary);
+}

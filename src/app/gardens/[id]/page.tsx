@@ -2,12 +2,33 @@ import { gardens } from "@/data/gardens";
 import { products } from "@/data/products";
 import AffiliateCarousel from "@/components/AffiliateCarousel";
 import styles from "./page.module.css";
-import { MapPin, Globe, CheckCircle2, Clock, Sprout } from "lucide-react";
+import { MapPin, Globe, CheckCircle2, Clock, Sprout, HelpCircle, Info } from "lucide-react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import type { Metadata } from "next";
 
 export function generateStaticParams() {
   return gardens.map((g) => ({ id: g.id }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const garden = gardens.find((g) => g.id === id);
+  if (!garden) return {};
+  return {
+    title: `${garden.name} | ATL Community Gardens`,
+    description: garden.description,
+    openGraph: {
+      title: garden.name,
+      description: garden.description,
+      images: garden.imageUrl ? [{ url: garden.imageUrl }] : undefined,
+      type: "article",
+    },
+  };
 }
 
 export default async function GardenDetail({ params }: { params: Promise<{ id: string }> }) {
@@ -18,12 +39,32 @@ export default async function GardenDetail({ params }: { params: Promise<{ id: s
     notFound();
   }
 
-  // Suggest products related to this specific garden's features
-  // For demonstration, just use all products
-  const suggestedProducts = products;
+  const isVerified = garden.verified !== false;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Place",
+    name: garden.name,
+    description: garden.description,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: garden.address,
+      addressLocality: garden.neighborhood,
+      addressRegion: "GA",
+      postalCode: garden.zipCode,
+      addressCountry: "US",
+    },
+    ...(garden.imageUrl && { image: garden.imageUrl }),
+    ...(garden.website && { url: garden.website }),
+    ...(garden.foundingYear && { foundingDate: String(garden.foundingYear) }),
+  };
 
   return (
     <div className="container">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <div className={styles.hero}>
         {garden.imageUrl ? (
           <Image
@@ -45,11 +86,19 @@ export default async function GardenDetail({ params }: { params: Promise<{ id: s
         <div className={styles.mainInfo}>
           <div className={styles.header}>
             <h1 className={styles.title}>{garden.name}</h1>
-            <div className={styles.badge} data-status={garden.plotAvailability}>
-              {garden.plotAvailability === "Available" && <CheckCircle2 size={16} />}
-              {garden.plotAvailability === "Waitlist" && <Clock size={16} />}
-              {garden.plotAvailability}
-            </div>
+            {isVerified ? (
+              <div className={styles.badge} data-status={garden.plotAvailability}>
+                {garden.plotAvailability === "Available" && <CheckCircle2 size={16} />}
+                {garden.plotAvailability === "Waitlist" && <Clock size={16} />}
+                {garden.plotAvailability === "Unknown" && <HelpCircle size={16} />}
+                {garden.plotAvailability}
+              </div>
+            ) : (
+              <div className={styles.badge} data-status="Unverified">
+                <Info size={16} />
+                Listing
+              </div>
+            )}
           </div>
 
           <div className={styles.meta}>
@@ -58,22 +107,43 @@ export default async function GardenDetail({ params }: { params: Promise<{ id: s
               {garden.address}
             </p>
             {garden.website && (
-              <a href={garden.website} target="_blank" rel="noopener noreferrer" className={styles.website}>
+              <a
+                href={garden.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.website}
+              >
                 <Globe size={18} className={styles.icon} />
                 Visit Website
               </a>
             )}
           </div>
 
+          {!isVerified && (
+            <div className={styles.verifyCallout}>
+              <Info size={20} className={styles.verifyIcon} />
+              <div>
+                <strong>We&rsquo;re still verifying this listing.</strong>
+                <p>
+                  Contact the garden directly to confirm plot availability, membership fees, and
+                  visiting hours. Know the details? Help us verify this listing by emailing{" "}
+                  <a href="mailto:corrections@atlgardens.com">corrections@atlgardens.com</a>.
+                </p>
+              </div>
+            </div>
+          )}
+
           <div className={styles.section}>
             <h2>About this Garden</h2>
-            {garden.foundingYear && <p className={styles.founded}>Established in {garden.foundingYear}</p>}
+            {garden.foundingYear && (
+              <p className={styles.founded}>Established in {garden.foundingYear}</p>
+            )}
             <p className={styles.description}>{garden.description}</p>
           </div>
 
           {(garden.visitingHours || garden.membershipCost) && (
             <div className={styles.section}>
-              <h2>Visitor & Member Info</h2>
+              <h2>Visitor &amp; Member Info</h2>
               <div className={styles.infoGrid}>
                 {garden.visitingHours && (
                   <div className={styles.infoCard}>
@@ -91,17 +161,19 @@ export default async function GardenDetail({ params }: { params: Promise<{ id: s
             </div>
           )}
 
-          <div className={styles.section}>
-            <h2>Amenities & Features</h2>
-            <ul className={styles.amenitiesList}>
-              {garden.amenities.map((amenity, i) => (
-                <li key={i} className={styles.amenityItem}>
-                  <CheckCircle2 size={16} className={styles.checkIcon} />
-                  {amenity}
-                </li>
-              ))}
-            </ul>
-          </div>
+          {garden.amenities.length > 0 && (
+            <div className={styles.section}>
+              <h2>Amenities &amp; Features</h2>
+              <ul className={styles.amenitiesList}>
+                {garden.amenities.map((amenity, i) => (
+                  <li key={i} className={styles.amenityItem}>
+                    <CheckCircle2 size={16} className={styles.checkIcon} />
+                    {amenity}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {garden.rules && garden.rules.length > 0 && (
             <div className={styles.section}>
@@ -120,16 +192,32 @@ export default async function GardenDetail({ params }: { params: Promise<{ id: s
         <div className={styles.sidebar}>
           <div className={`glass-panel ${styles.sidebarCard}`}>
             <h3>Interested in joining?</h3>
-            <p>Community gardens are a great way to grow your own food and meet neighbors.</p>
-            <button className={styles.btnPrimary}>
-              {garden.plotAvailability === "Available" ? "Apply for a Plot" : "Join Waitlist"}
-            </button>
+            <p>
+              {isVerified
+                ? "Community gardens are a great way to grow your own food and meet neighbors."
+                : "Reach out to the garden directly using their website or contact info to learn how to get involved."}
+            </p>
+            {isVerified && (
+              <button className={styles.btnPrimary}>
+                {garden.plotAvailability === "Available" ? "Apply for a Plot" : "Join Waitlist"}
+              </button>
+            )}
+            {garden.website && !isVerified && (
+              <a
+                href={garden.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.btnPrimary}
+              >
+                Visit Garden Website
+              </a>
+            )}
           </div>
         </div>
       </div>
 
       <div className={styles.affiliateSection}>
-        <AffiliateCarousel products={suggestedProducts} />
+        <AffiliateCarousel products={products.slice(0, 4)} />
       </div>
     </div>
   );

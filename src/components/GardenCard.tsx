@@ -1,6 +1,6 @@
 import { Garden } from "../types";
 import styles from "./GardenCard.module.css";
-import { MapPin, Sprout, CheckCircle2, Clock } from "lucide-react";
+import { MapPin, Sprout, CheckCircle2, Clock, HelpCircle, Info } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -15,6 +15,8 @@ export default function GardenCard({ garden }: Props) {
     garden.description.length > MAX_DESCRIPTION
       ? `${garden.description.slice(0, MAX_DESCRIPTION).trimEnd()}…`
       : garden.description;
+
+  const isVerified = garden.verified !== false;
 
   return (
     <Link href={`/gardens/${garden.id}`} className={`glass-panel ${styles.card}`}>
@@ -32,11 +34,19 @@ export default function GardenCard({ garden }: Props) {
             <Sprout size={48} className={styles.placeholderIcon} />
           </div>
         )}
-        <div className={styles.badge} data-status={garden.plotAvailability}>
-          {garden.plotAvailability === "Available" && <CheckCircle2 size={14} />}
-          {garden.plotAvailability === "Waitlist" && <Clock size={14} />}
-          {garden.plotAvailability}
-        </div>
+        {isVerified ? (
+          <div className={styles.badge} data-status={garden.plotAvailability}>
+            {garden.plotAvailability === "Available" && <CheckCircle2 size={14} />}
+            {garden.plotAvailability === "Waitlist" && <Clock size={14} />}
+            {garden.plotAvailability === "Unknown" && <HelpCircle size={14} />}
+            {garden.plotAvailability}
+          </div>
+        ) : (
+          <div className={styles.badge} data-status="Unverified">
+            <Info size={14} />
+            Listing
+          </div>
+        )}
       </div>
 
       <div className={styles.content}>
@@ -46,11 +56,13 @@ export default function GardenCard({ garden }: Props) {
           {garden.neighborhood}, {garden.zipCode}
         </p>
         <p className={styles.description}>{description}</p>
-        <div className={styles.amenities}>
-          {garden.amenities.slice(0, 3).map((amenity, i) => (
-            <span key={i} className={styles.amenityBadge}>{amenity}</span>
-          ))}
-        </div>
+        {garden.amenities.length > 0 && (
+          <div className={styles.amenities}>
+            {garden.amenities.slice(0, 3).map((amenity, i) => (
+              <span key={i} className={styles.amenityBadge}>{amenity}</span>
+            ))}
+          </div>
+        )}
       </div>
     </Link>
   );

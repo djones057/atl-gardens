@@ -20,13 +20,13 @@ const guides = [
     available: true,
   },
   {
-    href: "#",
+    href: "/guides/first-season",
     icon: Sprout,
     title: "Your First Season: A Beginner's Guide",
     description:
       "Everything first-time community gardeners need — soil prep, plot layout, watering, and what to plant first.",
-    badge: "Coming soon",
-    available: false,
+    badge: "8 min read",
+    available: true,
   },
   {
     href: "#",

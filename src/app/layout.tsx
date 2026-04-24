@@ -14,9 +14,44 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://atlgardens.com";
+
 export const metadata: Metadata = {
-  title: "ATL Community Gardens",
-  description: "Discover community gardens across Atlanta. Find plots, connect with local gardeners, and get the best gear for your gardening journey.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "ATL Community Gardens",
+    template: "%s | ATL Community Gardens",
+  },
+  description:
+    "Discover community gardens across Atlanta. Find plots, connect with local gardeners, and get the best gear for your gardening journey.",
+  keywords: [
+    "Atlanta community gardens",
+    "Atlanta gardening",
+    "community garden plots",
+    "Atlanta planting calendar",
+    "zone 7b gardening",
+    "zone 8a gardening",
+    "urban agriculture Atlanta",
+  ],
+  openGraph: {
+    title: "ATL Community Gardens",
+    description:
+      "A free directory of Atlanta community gardens, a zone 7b/8a planting calendar, and trusted gear picks.",
+    url: siteUrl,
+    siteName: "ATL Community Gardens",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ATL Community Gardens",
+    description:
+      "A free directory of Atlanta community gardens, a zone 7b/8a planting calendar, and trusted gear picks.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

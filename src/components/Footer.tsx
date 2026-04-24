@@ -31,10 +31,11 @@ export default function Footer() {
               <Link href="/gear">Recommended Gear</Link>
             </div>
             <div className={styles.column}>
-              <h3>Partner</h3>
-              <Link href="#">Add a Garden</Link>
-              <Link href="#">Nursery Partnership</Link>
-              <Link href="#">Contact Us</Link>
+              <h3>About</h3>
+              <Link href="/about">About Us</Link>
+              <a href="mailto:hello@atlgardens.com">Add a Garden</a>
+              <a href="mailto:partnerships@atlgardens.com">Nursery Partnership</a>
+              <a href="mailto:corrections@atlgardens.com">Corrections</a>
             </div>
           </div>
         </div>

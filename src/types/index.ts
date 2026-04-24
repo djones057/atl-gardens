@@ -5,7 +5,7 @@ export interface Garden {
   zipCode: string;
   address: string;
   description: string;
-  plotAvailability: "Available" | "Waitlist" | "Full";
+  plotAvailability: "Available" | "Waitlist" | "Full" | "Unknown";
   amenities: string[];
   imageUrl: string;
   website?: string;
@@ -13,6 +13,7 @@ export interface Garden {
   membershipCost?: string;
   rules?: string[];
   foundingYear?: number;
+  verified?: boolean;
 }
 
 export interface AffiliateProduct {

@@ -751,4 +751,509 @@ export const gardens: Garden[] = [
       "https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?q=80&w=800&auto=format&fit=crop",
     verified: false,
   },
+
+  // ─── Fulton County (Atlanta & suburbs) additions ────
+  {
+    id: "g55",
+    name: "Urban Farm in Ormewood (UFO)",
+    neighborhood: "Ormewood Park",
+    zipCode: "30316",
+    address: "703 Naomi St SE, Atlanta, GA 30316",
+    description:
+      "5.3-acre community-tended urban farm (formerly Red's Farm). Conveyed to City of Atlanta Parks in 2024 as Red's Farm Preserve; still run by community volunteers with 15 raised beds and in-ground plots.",
+    plotAvailability: "Unknown",
+    amenities: ["15 raised beds", "In-ground plots", "Events", "Community-tended"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1530836369250-ef71a3f5e481?q=80&w=800&auto=format&fit=crop",
+    website: "https://www.ufoatlanta.org/",
+    operator: "Urban Farm in Ormewood / City of Atlanta Parks",
+    verified: true,
+  },
+  {
+    id: "g56",
+    name: "Whitehall Terrace Community Garden",
+    neighborhood: "Adair Park",
+    zipCode: "30310",
+    address: "590 Whitehall Terrace SW, Atlanta, GA 30310",
+    description:
+      "AgLanta Grows-A-Lot community garden on Whitehall Terrace in southwest Atlanta.",
+    plotAvailability: "Unknown",
+    amenities: ["Community plots"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop",
+    operator: "AgLanta Grows-A-Lot",
+    verified: true,
+  },
+  {
+    id: "g57",
+    name: "Armand Community Garden",
+    neighborhood: "Lindridge–Martin Manor",
+    zipCode: "30324",
+    address: "2381 Armand Rd NE, Atlanta, GA 30324",
+    description:
+      "Community garden on Armand Road in northeast Atlanta.",
+    plotAvailability: "Unknown",
+    amenities: ["Community plots"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=800&auto=format&fit=crop",
+    verified: true,
+  },
+  {
+    id: "g58",
+    name: "Eden Urban Community Garden",
+    neighborhood: "English Avenue",
+    zipCode: "30314",
+    address: "712 Meldrum St NW, Atlanta, GA 30314",
+    description:
+      "Urban community garden on Meldrum Street on Atlanta's historic Westside.",
+    plotAvailability: "Unknown",
+    amenities: ["Community plots"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=800&auto=format&fit=crop",
+    verified: true,
+  },
+  {
+    id: "g59",
+    name: "Holistic Urban Community Garden",
+    neighborhood: "Washington Park",
+    zipCode: "30314",
+    address: "436 Joseph E. Lowery Blvd, Atlanta, GA 30314",
+    description:
+      "Community garden on Joseph E. Lowery Boulevard in Atlanta's Westside.",
+    plotAvailability: "Unknown",
+    amenities: ["Community plots"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1592484043432-1b1f618a3854?q=80&w=800&auto=format&fit=crop",
+    verified: true,
+  },
+  {
+    id: "g60",
+    name: "Georgia Avenue High Rise Garden",
+    neighborhood: "Mechanicsville",
+    zipCode: "30312",
+    address: "174 Georgia Ave SE, Atlanta, GA 30312",
+    description:
+      "Senior community garden at the Georgia Avenue High Rise, one of six sites in Post 3's Senior Community Garden Program.",
+    plotAvailability: "Unknown",
+    amenities: ["Senior garden"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=800&auto=format&fit=crop",
+    operator: "Post 3 Senior Community Garden Program",
+    verified: true,
+  },
+  {
+    id: "g61",
+    name: "Capitol Towers Community Garden",
+    neighborhood: "Summerhill",
+    zipCode: "30315",
+    address: "830 Crew St SE, Atlanta, GA 30315",
+    description:
+      "Senior community garden at Capitol Towers / Capitol Avenue School Apartments, part of Post 3's Senior Community Garden Program.",
+    plotAvailability: "Unknown",
+    amenities: ["Senior garden"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop",
+    operator: "Post 3 Senior Community Garden Program",
+    verified: true,
+  },
+  {
+    id: "g62",
+    name: "Ashview Community Garden",
+    neighborhood: "Ashview Heights",
+    zipCode: "30310",
+    address: "Fenwood St SW, Atlanta, GA 30310",
+    description:
+      "Neighborhood community garden on Fenwood Street in Ashview Heights (street number not yet confirmed).",
+    plotAvailability: "Unknown",
+    amenities: ["Community plots"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1416879598555-21d3f9e7c37b?q=80&w=800&auto=format&fit=crop",
+    verified: true,
+  },
+  {
+    id: "g63",
+    name: "Athens Ave Community Garden",
+    neighborhood: "West End",
+    zipCode: "30310",
+    address: "Athens Ave SW, Atlanta, GA 30310",
+    description:
+      "Community garden on Athens Avenue in southwest Atlanta (street number not yet confirmed).",
+    plotAvailability: "Unknown",
+    amenities: ["Community plots"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=800&auto=format&fit=crop",
+    verified: true,
+  },
+
+  // ─── Cobb County ────────────────────────────────────
+  {
+    id: "g64",
+    name: "North Marietta Neighborhood Community Garden",
+    neighborhood: "Marietta",
+    zipCode: "30060",
+    address: "341 Pine St, Marietta, GA 30060",
+    description:
+      "Twenty-four raised beds serving as an outdoor classroom for Head Start alongside neighborhood gardeners.",
+    plotAvailability: "Unknown",
+    amenities: ["24 raised beds", "Head Start classroom"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1558904541-efa843a96f0a?q=80&w=800&auto=format&fit=crop",
+    verified: true,
+  },
+  {
+    id: "g65",
+    name: "Green Meadows Preserve Community Garden",
+    neighborhood: "West Cobb",
+    zipCode: "30064",
+    address: "3780 Dallas Hwy, Marietta, GA 30064",
+    description:
+      "Fifty-seven raised beds available for lease inside a public park in west Cobb County.",
+    plotAvailability: "Unknown",
+    amenities: ["57 raised beds", "Public park"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1530836369250-ef71a3f5e481?q=80&w=800&auto=format&fit=crop",
+    verified: true,
+  },
+  {
+    id: "g66",
+    name: "Wellness Garden at Cobb County Farm Bureau",
+    neighborhood: "Marietta",
+    zipCode: "30064",
+    address: "2850 Powder Springs Rd, Marietta, GA 30064",
+    description:
+      "Dedicated donation garden that grows produce for local food banks.",
+    plotAvailability: "Unknown",
+    amenities: ["Donation garden"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=800&auto=format&fit=crop",
+    operator: "Cobb County Farm Bureau",
+    verified: true,
+  },
+  {
+    id: "g67",
+    name: "Reconnecting Our Roots Community Garden",
+    neighborhood: "Marietta",
+    zipCode: "30060",
+    address: "Lemon St NE, Marietta, GA 30060",
+    description:
+      "Allotment-style community garden on Lemon Street near downtown Marietta (street number not yet confirmed).",
+    plotAvailability: "Unknown",
+    amenities: ["Allotment plots"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1416879598555-21d3f9e7c37b?q=80&w=800&auto=format&fit=crop",
+    verified: true,
+  },
+  {
+    id: "g68",
+    name: "North Cobb Regional Library Community Garden",
+    neighborhood: "Kennesaw",
+    zipCode: "30144",
+    address: "3535 Old 41 Hwy NW, Kennesaw, GA 30144",
+    description:
+      "Community garden in the traffic-circle median next to the North Cobb Regional Library entrance.",
+    plotAvailability: "Unknown",
+    amenities: ["Library-adjacent"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop",
+    operator: "Cobb County Public Library",
+    verified: true,
+  },
+  {
+    id: "g69",
+    name: "Crossroads Community Garden",
+    neighborhood: "East Cobb",
+    zipCode: "30062",
+    address: "2661 Johnson Ferry Rd, Marietta, GA 30062",
+    description:
+      "Master-Gardener-supported community garden on Johnson Ferry Road.",
+    plotAvailability: "Unknown",
+    amenities: ["Master Gardener site"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1592484043432-1b1f618a3854?q=80&w=800&auto=format&fit=crop",
+    verified: true,
+  },
+  {
+    id: "g70",
+    name: "Cobb County Water System Wildlife & Rain Garden",
+    neighborhood: "Marietta",
+    zipCode: "30060",
+    address: "660 S Cobb Dr, Marietta, GA 30060",
+    description:
+      "Demonstration garden showcasing native plants and stormwater / rain-garden techniques.",
+    plotAvailability: "Unknown",
+    amenities: ["Native plants", "Rain garden", "Demonstration site"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=800&auto=format&fit=crop",
+    operator: "Cobb County Water System",
+    verified: true,
+  },
+  {
+    id: "g71",
+    name: "Kennesaw Gardens",
+    neighborhood: "Kennesaw",
+    zipCode: "30144",
+    address: "3007 Cherokee St, Kennesaw, GA 30144",
+    description:
+      "Host site for Cobb Master Gardeners' 'Plant a Row for the Hungry' donation project.",
+    plotAvailability: "Unknown",
+    amenities: ["Plant-A-Row-for-the-Hungry"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1558904541-efa843a96f0a?q=80&w=800&auto=format&fit=crop",
+    operator: "Cobb Master Gardeners",
+    verified: true,
+  },
+  {
+    id: "g72",
+    name: "McFarlane Nature Park",
+    neighborhood: "Marietta",
+    zipCode: "30067",
+    address: "280 Farm Rd SE, Marietta, GA 30067",
+    description:
+      "Cobb County nature park hosting regular community garden workdays.",
+    plotAvailability: "Unknown",
+    amenities: ["Nature park", "Workdays"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1530836369250-ef71a3f5e481?q=80&w=800&auto=format&fit=crop",
+    verified: true,
+  },
+
+  // ─── DeKalb County additions ────────────────────────
+  {
+    id: "g73",
+    name: "Stone Mountain Community Garden",
+    neighborhood: "Stone Mountain",
+    zipCode: "30083",
+    address: "VFW Park, 888 Gordon St, Stone Mountain, GA 30083",
+    description:
+      "Over fifty raised beds plus multiple composting systems inside VFW Park, Stone Mountain.",
+    plotAvailability: "Unknown",
+    amenities: ["50+ raised beds", "Composting systems"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1416879598555-21d3f9e7c37b?q=80&w=800&auto=format&fit=crop",
+    verified: true,
+  },
+  {
+    id: "g74",
+    name: "Scott Park Garden",
+    neighborhood: "Decatur",
+    zipCode: "30030",
+    address: "Scott Park, Decatur, GA 30030",
+    description:
+      "Downtown Decatur community garden with 32 member plots, including six raised plots (street number not yet confirmed).",
+    plotAvailability: "Unknown",
+    amenities: ["32 member plots", "6 raised plots"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop",
+    verified: true,
+  },
+
+  // ─── Forsyth County ─────────────────────────────────
+  {
+    id: "g75",
+    name: "Live Well Garden",
+    neighborhood: "Cumming",
+    zipCode: "30040",
+    address: "Sexton Hall Community Center, 2115 Chloe Rd, Cumming, GA 30040",
+    description:
+      "Community garden at Sexton Hall Community Center, serving Forsyth County's senior services and the broader community.",
+    plotAvailability: "Unknown",
+    amenities: ["Senior-friendly", "Community center"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=800&auto=format&fit=crop",
+    operator: "Forsyth County Senior Services",
+    verified: true,
+  },
+
+  // ─── Clayton County ─────────────────────────────────
+  {
+    id: "g76",
+    name: "Community Garden of Morrow",
+    neighborhood: "Morrow",
+    zipCode: "30260",
+    address: "5900 Reynolds Rd, Morrow, GA 30260",
+    description:
+      "City-supported community garden giving Morrow residents space to grow produce and learn gardening basics.",
+    plotAvailability: "Unknown",
+    amenities: ["Community plots"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=800&auto=format&fit=crop",
+    operator: "City of Morrow",
+    verified: true,
+  },
+  {
+    id: "g77",
+    name: "Virginia Burton Gray Recreation Center Garden",
+    neighborhood: "Riverdale",
+    zipCode: "30296",
+    address: "1475 E Fayetteville Rd, Riverdale, GA 30296",
+    description:
+      "Community garden at the Virginia Burton Gray Recreation Center in Riverdale. Opened with an Earth Day event in 2025.",
+    plotAvailability: "Unknown",
+    amenities: ["Rec center garden"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1592484043432-1b1f618a3854?q=80&w=800&auto=format&fit=crop",
+    operator: "Clayton County Parks & Rec",
+    foundingYear: 2025,
+    verified: true,
+  },
+  {
+    id: "g78",
+    name: "Gerald Matthews Complex Garden",
+    neighborhood: "Hampton",
+    zipCode: "30228",
+    address: "1935 McDonough Rd, Hampton, GA 30228",
+    description:
+      "Community garden at the Gerald Matthews Complex in Hampton, site of a 2024 community clean-up led by a county commissioner.",
+    plotAvailability: "Unknown",
+    amenities: ["Community plots"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1558904541-efa843a96f0a?q=80&w=800&auto=format&fit=crop",
+    operator: "Clayton County",
+    verified: true,
+  },
+
+  // ─── Listing-level (neighborhood/zip only) ──────────
+  {
+    id: "g79",
+    name: "Rose Circle Community Garden",
+    neighborhood: "West End",
+    zipCode: "30310",
+    address: "Atlanta, GA 30310",
+    description:
+      "Community garden in southwest Atlanta. Listing details are still being verified — street address not yet confirmed.",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=800&auto=format&fit=crop",
+    verified: false,
+  },
+  {
+    id: "g80",
+    name: "Summerhill Community Garden",
+    neighborhood: "Summerhill",
+    zipCode: "30312",
+    address: "Summerhill, Atlanta, GA 30312",
+    description:
+      "Volunteer-supported community garden in the Summerhill neighborhood, in the Food Well Alliance partner network. Address not yet confirmed.",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=800&auto=format&fit=crop",
+    operator: "Food Well Alliance (partner)",
+    verified: false,
+  },
+  {
+    id: "g81",
+    name: "Gilliam Park Community Garden",
+    neighborhood: "Oakland City",
+    zipCode: "30310",
+    address: "Atlanta, GA 30310",
+    description:
+      "AgLanta Grows-A-Lot community garden at Gilliam Park. Address not yet confirmed (distinct from Gilliam's Community Garden on Oakland Terrace).",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop",
+    operator: "AgLanta Grows-A-Lot",
+    verified: false,
+  },
+  {
+    id: "g82",
+    name: "Leila Valley Community Farm",
+    neighborhood: "Atlanta",
+    zipCode: "",
+    address: "Atlanta, GA",
+    description:
+      "Urban community farm in Atlanta. Listing details are still being verified.",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1416879598555-21d3f9e7c37b?q=80&w=800&auto=format&fit=crop",
+    verified: false,
+  },
+  {
+    id: "g83",
+    name: "Our Giving Garden",
+    neighborhood: "Atlanta",
+    zipCode: "",
+    address: "Atlanta, GA",
+    description:
+      "Donation-focused community garden project of CompostNow. Location not yet confirmed.",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=800&auto=format&fit=crop",
+    operator: "CompostNow",
+    verified: false,
+  },
+  {
+    id: "g84",
+    name: "Marian Road Senior High Rise Community Garden",
+    neighborhood: "Atlanta",
+    zipCode: "",
+    address: "Atlanta, GA",
+    description:
+      "Senior community garden at Marian Road High Rise. Listing details are still being verified.",
+    plotAvailability: "Unknown",
+    amenities: ["Senior garden"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1592484043432-1b1f618a3854?q=80&w=800&auto=format&fit=crop",
+    verified: false,
+  },
+  {
+    id: "g85",
+    name: "Good Shepherd Community Garden",
+    neighborhood: "Atlanta",
+    zipCode: "",
+    address: "Atlanta, GA",
+    description:
+      "Faith-based or community-run garden. Listing details are still being verified.",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=800&auto=format&fit=crop",
+    verified: false,
+  },
+  {
+    id: "g86",
+    name: "Lakewood Environmental Arts Foundation (LEAF)",
+    neighborhood: "Lakewood",
+    zipCode: "30354",
+    address: "Lakewood, Atlanta, GA 30354",
+    description:
+      "Environmental arts organization with community garden / greenspace programming in Lakewood. Address not yet confirmed.",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=800&auto=format&fit=crop",
+    verified: false,
+  },
+  {
+    id: "g87",
+    name: "I.T. and Lodemia Terrell Community Garden",
+    neighborhood: "Austell",
+    zipCode: "30168",
+    address: "Austell, GA 30168",
+    description:
+      "Community garden in Austell (Cobb County). Listing details are still being verified.",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop",
+    verified: false,
+  },
+  {
+    id: "g88",
+    name: "Hairston Lake Community Garden",
+    neighborhood: "Stone Mountain",
+    zipCode: "30083",
+    address: "Hairston Lake Apartments, Stone Mountain, GA 30083",
+    description:
+      "Twenty-four-plot community garden at Hairston Lake Apartments (Housing Authority-adjacent), with a grant-funded rainwater irrigation system.",
+    plotAvailability: "Unknown",
+    amenities: ["24 plots", "Rainwater irrigation"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1416879598555-21d3f9e7c37b?q=80&w=800&auto=format&fit=crop",
+    verified: false,
+  },
 ];

@@ -1,8 +1,8 @@
+import { Fragment } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import { products as shedProducts } from "@/lib/potting-shed-data";
 import ProductCard from "@/components/ProductCard";
-import { plantingCalendar } from "@/data/plantingCalendar";
 import { ArrowRight } from "lucide-react";
 
 type DirTag = { label: string; variant?: "open" | "full" };
@@ -25,6 +25,19 @@ const DIR_ENTRIES: DirEntry[] = [
   { idx: "009", name: "Lakewood Orchard", meta: ["Lakewood", "Fruit trees"], tags: [{ label: "Harvest days" }] },
 ];
 
+type CellState = "empty" | "plant" | "harvest" | "both";
+
+const MONTHS_SHORT = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] as const;
+
+const CROPS: { name: string; cells: CellState[] }[] = [
+  { name: "Tomato",   cells: ["empty", "empty", "plant", "plant", "empty", "harvest", "harvest", "harvest", "harvest", "empty", "empty", "empty"] },
+  { name: "Okra",     cells: ["empty", "empty", "empty", "plant", "plant", "empty", "harvest", "harvest", "harvest", "harvest", "empty", "empty"] },
+  { name: "Collards", cells: ["harvest", "harvest", "plant", "empty", "empty", "empty", "empty", "plant", "plant", "harvest", "harvest", "harvest"] },
+  { name: "Peppers",  cells: ["empty", "empty", "plant", "plant", "empty", "harvest", "harvest", "harvest", "harvest", "harvest", "empty", "empty"] },
+  { name: "Garlic",   cells: ["empty", "empty", "empty", "empty", "harvest", "harvest", "empty", "empty", "empty", "plant", "plant", "empty"] },
+  { name: "Peas",     cells: ["empty", "plant", "plant", "harvest", "harvest", "empty", "empty", "empty", "plant", "empty", "harvest", "empty"] },
+];
+
 const MAP_PINS = [
   { x: 150, y: 140, label: "Bankhead", anchor: "start", variant: "open" },
   { x: 240, y: 170, label: "Old Fourth Ward", anchor: "start", variant: "open" },
@@ -41,9 +54,6 @@ const MAP_PINS = [
 ] as const;
 
 export default function Home() {
-  const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
-  const thisMonth = plantingCalendar.find((m) => m.month === currentMonth);
-
   return (
     <>
       {/* ─── HERO ─── */}
@@ -125,56 +135,70 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── THIS MONTH ─── */}
-      {thisMonth && (
-        <section className={`container ${styles.month}`}>
-          <div className={styles.monthWatermark} aria-hidden="true">{currentMonth}</div>
-
-          <div className={styles.monthGrid}>
-            <div className={styles.monthLeft}>
-              <span className={styles.sectionLabel}>This Month in the Garden</span>
-              <h2 className={styles.monthHeading}>{currentMonth}<br />in Atlanta</h2>
-              <p className={styles.monthSummary}>{thisMonth.summary}</p>
-              <Link href="/guides/planting-calendar" className={styles.monthLink}>
-                See the full 12-month calendar <ArrowRight size={15} />
-              </Link>
+      {/* ─── 02 / GROWING CALENDAR ─── */}
+      <section id="calendar" className={`${styles.sec} ${styles.calSection}`}>
+        <div className="shell">
+          <div className={styles.calWrap}>
+            <div className={`${styles.secHead} ${styles.calHead}`}>
+              <div>
+                <div className={styles.secNum}>02 / Growing calendar</div>
+                <h2 className={styles.secTitle}>
+                  What to plant this <em>month</em>.
+                </h2>
+              </div>
+              <p className={styles.secIntro}>
+                Zone 8a timing, dialed in for metro Atlanta — from tomato starts in March
+                to fall greens in September. Shaded weeks are prime for each crop.
+              </p>
             </div>
 
-            <div className={styles.monthRight}>
-              {thisMonth.sowOutdoors.length > 0 && (
-                <div className={styles.monthGroup}>
-                  <h3 className={styles.monthGroupLabel}>Sow Outdoors</h3>
-                  <ul className={styles.monthItems}>
-                    {thisMonth.sowOutdoors.slice(0, 5).map((c) => (
-                      <li key={c}>{c}</li>
-                    ))}
-                  </ul>
+            <div
+              className={styles.cal}
+              role="table"
+              aria-label="Growing calendar: sow and harvest windows by crop"
+            >
+              <div className={styles.calCorner}>&nbsp;</div>
+              {MONTHS_SHORT.map((m) => (
+                <div key={m} className={styles.calHeadCell}>
+                  {m}
                 </div>
-              )}
-              {thisMonth.transplant.length > 0 && (
-                <div className={styles.monthGroup}>
-                  <h3 className={styles.monthGroupLabel}>Transplant</h3>
-                  <ul className={styles.monthItems}>
-                    {thisMonth.transplant.slice(0, 4).map((c) => (
-                      <li key={c}>{c}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {thisMonth.tasks.length > 0 && (
-                <div className={styles.monthGroup}>
-                  <h3 className={styles.monthGroupLabel}>Tasks</h3>
-                  <ul className={styles.monthItems}>
-                    {thisMonth.tasks.slice(0, 3).map((t) => (
-                      <li key={t}>{t}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              ))}
+
+              {CROPS.map((c) => (
+                <Fragment key={c.name}>
+                  <div className={styles.calCrop}>{c.name}</div>
+                  {c.cells.map((state, i) => (
+                    <div
+                      key={i}
+                      className={`${styles.calCell} ${
+                        state === "plant"
+                          ? styles.calCellPlant
+                          : state === "harvest"
+                            ? styles.calCellHarvest
+                            : state === "both"
+                              ? styles.calCellBoth
+                              : ""
+                      }`}
+                    />
+                  ))}
+                </Fragment>
+              ))}
+            </div>
+
+            <div className={styles.calLegend}>
+              <span>
+                <i className={styles.calLegendSow} aria-hidden="true" /> Sow / transplant
+              </span>
+              <span>
+                <i className={styles.calLegendHarvest} aria-hidden="true" /> Harvest window
+              </span>
+              <span className={styles.calLegendFrost}>
+                USDA zone 8a · avg last frost Mar 29
+              </span>
             </div>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       {/* ─── 01 / DIRECTORY ─── */}
       <section id="directory" className={styles.sec}>

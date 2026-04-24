@@ -546,6 +546,140 @@
 
 
 /* ─────────────────────────────────────────
+   02 / GROWING CALENDAR
+───────────────────────────────────────── */
+.calSection {
+  background: var(--paper-2);
+}
+
+.calWrap {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.calHead {
+  margin-bottom: 8px;
+}
+
+.calWrap .secTitle {
+  color: var(--paper);
+}
+
+.calWrap .secTitle em {
+  color: var(--moss-2);
+}
+
+.calWrap .secNum,
+.calWrap .secIntro {
+  color: oklch(0.75 0.02 140);
+}
+
+.cal {
+  display: grid;
+  grid-template-columns: 120px repeat(12, 1fr);
+  gap: 1px;
+  margin-top: 24px;
+  font-size: 12px;
+}
+
+.cal > div {
+  background: var(--ink);
+  padding: 10px 6px;
+}
+
+.calCorner {
+  border-bottom: 1px solid oklch(0.35 0.02 140);
+}
+
+.calHeadCell {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: oklch(0.65 0.02 140);
+  border-bottom: 1px solid oklch(0.35 0.02 140);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.calCrop {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 16px;
+  border-bottom: 1px solid oklch(0.3 0.02 140);
+  padding: 14px 4px;
+}
+
+.calCell {
+  border-bottom: 1px solid oklch(0.3 0.02 140);
+  height: 44px;
+  position: relative;
+}
+
+.calCellPlant {
+  background: var(--moss-2) !important;
+}
+
+.calCellHarvest {
+  background: var(--clay) !important;
+}
+
+.calCellBoth {
+  background: linear-gradient(90deg, var(--moss-2) 50%, var(--clay) 50%) !important;
+}
+
+.calLegend {
+  display: flex;
+  gap: 24px;
+  margin-top: 28px;
+  font-size: 13px;
+  color: oklch(0.75 0.02 140);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.calLegend i {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: -2px;
+  border-radius: 2px;
+}
+
+.calLegendSow {
+  background: var(--moss-2);
+}
+
+.calLegendHarvest {
+  background: var(--clay);
+}
+
+.calLegendFrost {
+  margin-left: auto;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 960px) {
+  .calWrap {
+    padding: 32px 20px;
+  }
+  .cal {
+    font-size: 10px;
+    grid-template-columns: 80px repeat(12, 1fr);
+  }
+  .calCrop {
+    font-size: 13px;
+    padding: 12px 3px;
+  }
+}
+
+
+/* ─────────────────────────────────────────
    SHARED LABELS
 ───────────────────────────────────────── */
 .sectionLabel {

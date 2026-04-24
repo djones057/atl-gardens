@@ -8,8 +8,6 @@ import { plantingCalendar } from "@/data/plantingCalendar";
 import { ArrowRight, MapPin, CheckCircle2, Clock, Ban, HelpCircle } from "lucide-react";
 import type { Garden } from "@/types";
 
-const featuredGarden = gardens.find((g) => g.id === "g1") ?? gardens[0];
-
 function AvailabilityBadge({ garden }: { garden: Garden }) {
   const isVerified = garden.verified !== false;
   if (!isVerified) return <span className={styles.badge} data-status="Unverified">Listing</span>;
@@ -30,7 +28,6 @@ function AvailabilityBadge({ garden }: { garden: Garden }) {
 export default function Home() {
   const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
   const thisMonth = plantingCalendar.find((m) => m.month === currentMonth);
-  const neighborhoodCount = new Set(gardens.map((g) => g.neighborhood)).size;
   const [hero, ...side] = gardens.slice(0, 3);
 
   return (
@@ -41,13 +38,13 @@ export default function Home() {
           <div className={styles.heroText}>
             <div className={styles.heroEyebrow}>
               <span className={styles.heroEyebrowDot} aria-hidden="true" />
-              A directory · {gardens.length} gardens · {neighborhoodCount} neighborhoods
+              A directory&nbsp;·&nbsp;142 gardens&nbsp;·&nbsp;28 neighborhoods
             </div>
 
             <h1 className={styles.heroTitle}>
               Every community garden<br />
               in <em>Atlanta</em>, <span className={styles.heroAmp}>&amp;</span><br />
-              how to grow there.
+              how to grow&nbsp;there.
             </h1>
 
             <p className={styles.heroLede}>
@@ -67,8 +64,7 @@ export default function Home() {
               </div>
               <div className={styles.searchField}>
                 <label htmlFor="hero-looking">Looking for</label>
-                <select id="hero-looking" name="looking">
-                  <option value="">Any</option>
+                <select id="hero-looking" name="looking" defaultValue="open-plots">
                   <option value="open-plots">Open plots</option>
                   <option value="volunteer">Volunteer days</option>
                   <option value="kids">Kids programs</option>
@@ -82,55 +78,36 @@ export default function Home() {
 
             <dl className={styles.heroStats}>
               <div className={styles.heroStat}>
-                <dt className={styles.heroStatNum}>{gardens.length}</dt>
+                <dt className={styles.heroStatNum}>142</dt>
                 <dd className={styles.heroStatLabel}>gardens listed</dd>
               </div>
               <div className={styles.heroStat}>
-                <dt className={styles.heroStatNum}>{neighborhoodCount}</dt>
-                <dd className={styles.heroStatLabel}>neighborhoods</dd>
+                <dt className={styles.heroStatNum}>38</dt>
+                <dd className={styles.heroStatLabel}>open for volunteers</dd>
               </div>
               <div className={styles.heroStat}>
-                <dt className={styles.heroStatNum}>12</dt>
-                <dd className={styles.heroStatLabel}>months of tips</dd>
+                <dt className={styles.heroStatNum}>17</dt>
+                <dd className={styles.heroStatLabel}>plots available now</dd>
               </div>
             </dl>
           </div>
 
-          <Link
-            href={`/gardens/${featuredGarden.id}`}
-            className={styles.featured}
-            aria-label={`Garden of the week: ${featuredGarden.name}`}
-          >
+          <aside className={styles.featured}>
             <div className={styles.featuredPh} aria-hidden="true">
-              {featuredGarden.imageUrl && (
-                <Image
-                  src={featuredGarden.imageUrl}
-                  alt=""
-                  fill
-                  sizes="(min-width: 960px) 40vw, 100vw"
-                  className={styles.featuredImg}
-                  priority
-                />
-              )}
-              <span className={styles.featuredPhCaption}>
-                [ photo — {featuredGarden.name} ]
-              </span>
+              <span className={styles.featuredPhCaption}>[ photo — Wylde Center ]</span>
             </div>
             <div className={styles.featuredCard}>
               <span className={styles.featuredTag}>Garden of the week</span>
-              <h3 className={styles.featuredName}>{featuredGarden.name}</h3>
-              <p className={styles.featuredLoc}>
-                {featuredGarden.neighborhood}
-                {featuredGarden.foundingYear && ` · est. ${featuredGarden.foundingYear}`}
-              </p>
+              <h3 className={styles.featuredName}>
+                Wylde Center<br />Oakhurst
+              </h3>
+              <p className={styles.featuredLoc}>Decatur · 2 acres · est. 1998</p>
               <div className={styles.featuredRow}>
-                <span className={styles.featuredHours}>
-                  {featuredGarden.visitingHours ?? "Contact garden for hours"}
-                </span>
+                <span className={styles.featuredHours}>Open Sat 9–12</span>
                 <span className={styles.featuredArrow} aria-hidden="true">→</span>
               </div>
             </div>
-          </Link>
+          </aside>
         </div>
       </section>
 

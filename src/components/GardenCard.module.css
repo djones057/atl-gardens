@@ -66,6 +66,11 @@
   color: var(--secondary);
 }
 
+.badge[data-status="Unknown"],
+.badge[data-status="Unverified"] {
+  color: var(--text-secondary);
+}
+
 .content {
   padding: 1.5rem;
   display: flex;

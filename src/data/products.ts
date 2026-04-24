@@ -1,43 +1,4 @@
-import { AffiliateProduct, Nursery } from "../types";
-
-export const products: AffiliateProduct[] = [
-  {
-    id: "p1",
-    title: "Heavy Duty Gardening Gloves",
-    description: "Puncture-resistant, breathable gloves perfect for weeding and pruning.",
-    category: "Gear",
-    imageUrl: "/images/product1.jpg",
-    affiliateUrl: "https://amazon.com/placeholder-gloves",
-    price: "$14.99"
-  },
-  {
-    id: "p2",
-    title: "Ergonomic Hand Trowel",
-    description: "Rust-resistant aluminum trowel with a comfortable grip for long planting sessions.",
-    category: "Tools",
-    imageUrl: "/images/product2.jpg",
-    affiliateUrl: "https://amazon.com/placeholder-trowel",
-    price: "$12.50"
-  },
-  {
-    id: "p3",
-    title: "Organic Heirloom Tomato Seeds",
-    description: "A diverse mix of colorful, flavorful heirloom tomato seeds.",
-    category: "Seeds",
-    imageUrl: "/images/product3.jpg",
-    affiliateUrl: "https://amazon.com/placeholder-seeds",
-    price: "$8.99"
-  },
-  {
-    id: "p4",
-    title: "Galvanized Raised Garden Bed",
-    description: "Durable 4x3ft steel raised bed for optimal drainage and easy access.",
-    category: "Gear",
-    imageUrl: "/images/product4.jpg",
-    affiliateUrl: "https://amazon.com/placeholder-raisedbed",
-    price: "$45.00"
-  }
-];
+import { Nursery } from "../types";
 
 export const nurseries: Nursery[] = [
   {
@@ -46,8 +7,9 @@ export const nurseries: Nursery[] = [
     neighborhood: "Buckhead",
     description: "Atlanta's staple for premium plants, gardening supplies, and expert advice since 1958.",
     specialties: ["Perennials", "Trees", "Garden design"],
-    imageUrl: "/images/nursery1.jpg",
-    website: "https://www.pikenursery.com/"
+    imageUrl: "https://images.unsplash.com/photo-1524593166156-312f362cada0?q=80&w=800&auto=format&fit=crop",
+    website: "https://www.pikenursery.com/",
+    featured: true
   },
   {
     id: "n2",
@@ -55,7 +17,7 @@ export const nurseries: Nursery[] = [
     neighborhood: "Grant Park",
     description: "A boutique garden center specializing in unique, hard-to-find plants for urban spaces.",
     specialties: ["Houseplants", "Native plants", "Container gardening"],
-    imageUrl: "/images/nursery2.jpg",
+    imageUrl: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?q=80&w=800&auto=format&fit=crop",
     website: "https://gardenhoodatlanta.com/"
   },
   {
@@ -64,7 +26,7 @@ export const nurseries: Nursery[] = [
     neighborhood: "Scottdale",
     description: "Specializing in native plants of the Southeast, perfect for ecological restoration and pollinator gardens.",
     specialties: ["Native plants", "Pollinators", "Ecological landscaping"],
-    imageUrl: "/images/nursery3.jpg",
+    imageUrl: "https://images.unsplash.com/photo-1508349937151-22b68b72d5b1?q=80&w=800&auto=format&fit=crop",
     website: "https://beechhollowfarms.com/"
   }
 ];

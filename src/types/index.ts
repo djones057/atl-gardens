@@ -5,7 +5,7 @@ export interface Garden {
   zipCode: string;
   address: string;
   description: string;
-  plotAvailability: "Available" | "Waitlist" | "Full";
+  plotAvailability: "Available" | "Waitlist" | "Full" | "Unknown";
   amenities: string[];
   imageUrl: string;
   website?: string;
@@ -13,16 +13,10 @@ export interface Garden {
   membershipCost?: string;
   rules?: string[];
   foundingYear?: number;
-}
-
-export interface AffiliateProduct {
-  id: string;
-  title: string;
-  description: string;
-  category: "Tools" | "Seeds" | "Gear" | "Books";
-  imageUrl: string;
-  affiliateUrl: string;
-  price: string;
+  verified?: boolean;
+  phone?: string;
+  email?: string;
+  operator?: string;
 }
 
 export interface Nursery {
@@ -33,4 +27,5 @@ export interface Nursery {
   specialties: string[];
   imageUrl: string;
   website: string;
+  featured?: boolean;
 }

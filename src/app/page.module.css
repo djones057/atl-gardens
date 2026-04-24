@@ -1,163 +1,1435 @@
+/* ─────────────────────────────────────────
+   HERO — editorial split
+───────────────────────────────────────── */
 .hero {
-  position: relative;
-  padding: 6rem 0;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(135deg, rgba(45, 90, 39, 0.05) 0%, rgba(233, 196, 106, 0.1) 100%);
-  border-radius: var(--radius-lg);
-  margin: 2rem 0 4rem;
+  padding: 80px 0 64px;
+  border-bottom: 1px solid var(--rule);
 }
 
-.heroContent {
-  position: relative;
-  z-index: 10;
-  max-width: 800px;
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: end;
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.heroEyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--ink-faint);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.heroEyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--clay);
+  flex: none;
 }
 
 .heroTitle {
-  font-size: 3.5rem;
-  line-height: 1.1;
-  color: var(--text-primary);
-  margin-bottom: 1.5rem;
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: clamp(56px, 7.5vw, 108px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-weight: 400;
 }
 
-.heroTitle span {
-  color: var(--primary);
+.heroTitle em {
+  font-style: italic;
+  color: var(--moss);
 }
 
-.heroSubtitle {
-  font-size: 1.2rem;
-  color: var(--text-secondary);
-  margin-bottom: 2.5rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+.heroAmp {
+  font-style: italic;
+  color: var(--clay);
 }
 
-.ctaGroup {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
+.heroLede {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 54ch;
 }
 
-.btnPrimary {
-  background: var(--primary);
-  color: #fff;
-  padding: 0.8rem 2rem;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: 1.1rem;
+.search {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr auto;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: 14px;
+  overflow: hidden;
+  max-width: 640px;
+  box-shadow: 0 1px 0 var(--paper-2), 6px 6px 0 var(--paper-2);
 }
 
-.btnPrimary:hover {
-  background: var(--primary-hover);
-  transform: translateY(-2px);
-}
-
-.btnSecondary {
-  background: var(--bg-color);
-  color: var(--primary);
-  border: 2px solid var(--primary);
-  padding: 0.8rem 2rem;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
-.btnSecondary:hover {
-  background: rgba(45, 90, 39, 0.05);
-  transform: translateY(-2px);
-}
-
-/* Stats Banner */
-.statsBanner {
-  background: var(--primary);
-  color: #fff;
-  padding: 3rem 0;
-  margin-bottom: 4rem;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--glass-shadow);
-}
-
-.statsContainer {
+.searchField {
+  padding: 14px 18px;
+  border-right: 1px solid var(--rule);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  gap: 2.5rem;
+  gap: 4px;
+  min-width: 0;
 }
 
-@media (min-width: 768px) {
-  .statsContainer {
-    flex-direction: row;
-    gap: 0;
+.searchField label {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.searchField input,
+.searchField select {
+  all: unset;
+  font: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  width: 100%;
+  min-width: 0;
+}
+
+.searchField select {
+  cursor: pointer;
+}
+
+.searchBtn {
+  background: var(--moss);
+  color: var(--paper);
+  border: 0;
+  padding: 0 28px;
+  font: inherit;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.searchBtn:hover {
+  background: var(--ink);
+}
+
+.heroStats {
+  display: flex;
+  gap: 28px;
+  margin-top: 4px;
+}
+
+.heroStat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.heroStatNum {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 22px;
+  color: var(--moss);
+  line-height: 1;
+  font-weight: 400;
+}
+
+.heroStatLabel {
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+/* Featured "Garden of the week" card */
+.featured {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  aspect-ratio: 4 / 5;
+  background: var(--moss-wash);
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.featuredPh {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    135deg,
+    oklch(0.78 0.05 130) 0 8px,
+    oklch(0.82 0.04 130) 8px 16px
+  );
+}
+
+.featuredPhCaption {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  color: oklch(0.35 0.04 140);
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+.featuredCard {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.featuredTag {
+  position: absolute;
+  top: -12px;
+  left: 16px;
+  background: var(--clay);
+  color: var(--paper);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.featuredName {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 28px;
+  line-height: 1.05;
+  margin-top: 4px;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.featuredLoc {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 6px;
+}
+
+.featuredRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--rule);
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+.featuredHours {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  letter-spacing: 0.04em;
+}
+
+.featuredArrow {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 22px;
+  color: var(--moss);
+}
+
+@media (max-width: 960px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .featured {
+    aspect-ratio: 5 / 4;
   }
 }
 
-.statItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.statNumber {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 0.5rem;
-  font-family: var(--font-outfit);
-}
-
-.statLabel {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  font-weight: 500;
-}
-
-.statDivider {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .statDivider {
-    display: block;
-    width: 2px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.2);
+@media (max-width: 560px) {
+  .hero {
+    padding: 48px 0 40px;
+  }
+  .search {
+    grid-template-columns: 1fr;
+  }
+  .searchField {
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .searchBtn {
+    padding: 14px;
+  }
+  .heroStats {
+    flex-wrap: wrap;
+    gap: 20px;
   }
 }
 
-.section {
-  padding: 4rem 0;
+
+/* ─────────────────────────────────────────
+   SHARED SECTION HEADER (used by 01–04)
+───────────────────────────────────────── */
+.sec {
+  padding: 96px 0;
+  border-bottom: 1px solid var(--rule);
 }
 
-.sectionHeader {
+.secHead {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 2.5rem;
+  margin-bottom: 40px;
+  gap: 40px;
 }
 
-.sectionTitle {
-  font-size: 2.5rem;
+.secNum {
+  color: var(--ink-faint);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.secTitle {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 54px;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  margin-top: 10px;
+  max-width: 14ch;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.secTitle em {
+  font-style: italic;
+  color: var(--moss);
+}
+
+.secIntro {
+  max-width: 42ch;
+  color: var(--ink-soft);
+  font-size: 16px;
+}
+
+
+/* ─────────────────────────────────────────
+   01 / DIRECTORY
+───────────────────────────────────────── */
+.dirHeadRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 18px;
+}
+
+.dirToggle {
+  display: inline-flex;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.dirToggle button {
+  all: unset;
+  padding: 8px 18px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--ink-soft);
+  font-family: inherit;
+}
+
+.dirToggleOn {
+  background: var(--ink);
+  color: var(--paper) !important;
+}
+
+.dirGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.map {
+  position: sticky;
+  top: 92px;
+  background: var(--moss-wash);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  aspect-ratio: 4 / 4.2;
+  overflow: hidden;
+}
+
+.map svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.mapLabel {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.mapLegend {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 12px 14px;
+  border-radius: 8px;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 12px;
+}
+
+.mapLegend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-soft);
+}
+
+.mapLegend i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legendDotOpen {
+  background: var(--moss);
+}
+
+.legendDotMembers {
+  background: var(--clay);
+}
+
+.legendDotInterstate {
+  background: var(--ink-faint);
+}
+
+.gardenList {
+  display: grid;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.gardenRow {
+  background: var(--paper);
+  padding: 22px 24px;
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 18px;
+  align-items: center;
+  transition: background 0.15s;
+}
+
+.gardenRow:hover {
+  background: var(--paper-2);
+}
+
+.gardenIdx {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+}
+
+.gardenName {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 24px;
+  line-height: 1.1;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.gardenMeta {
+  display: flex;
+  gap: 14px;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.gardenMeta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tag {
+  background: var(--moss-wash);
+  color: var(--moss);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.tagFull {
+  background: var(--clay-wash);
+  color: var(--clay);
+}
+
+.gardenArrow {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 28px;
+  color: var(--ink-faint);
+  transition: transform 0.2s, color 0.2s;
+}
+
+.gardenRow:hover .gardenArrow {
+  color: var(--moss);
+  transform: translateX(4px);
+}
+
+.dirMore {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.dirMoreLink {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 22px;
+  color: var(--moss);
+  font-style: italic;
+}
+
+@media (max-width: 960px) {
+  .secHead {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .dirHeadRight {
+    align-items: flex-start;
+  }
+  .dirGrid {
+    grid-template-columns: 1fr;
+  }
+  .map {
+    position: static;
+  }
+  .secTitle {
+    font-size: 40px;
+  }
+}
+
+
+/* ─────────────────────────────────────────
+   02 / GROWING CALENDAR
+───────────────────────────────────────── */
+.calSection {
+  background: var(--paper-2);
+}
+
+.calWrap {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.calHead {
+  margin-bottom: 8px;
+}
+
+.calWrap .secTitle {
+  color: var(--paper);
+}
+
+.calWrap .secTitle em {
+  color: var(--moss-2);
+}
+
+.calWrap .secNum,
+.calWrap .secIntro {
+  color: oklch(0.75 0.02 140);
+}
+
+.cal {
+  display: grid;
+  grid-template-columns: 120px repeat(12, 1fr);
+  gap: 1px;
+  margin-top: 24px;
+  font-size: 12px;
+}
+
+.cal > div {
+  background: var(--ink);
+  padding: 10px 6px;
+}
+
+.calCorner {
+  border-bottom: 1px solid oklch(0.35 0.02 140);
+}
+
+.calHeadCell {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: oklch(0.65 0.02 140);
+  border-bottom: 1px solid oklch(0.35 0.02 140);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.calCrop {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 16px;
+  border-bottom: 1px solid oklch(0.3 0.02 140);
+  padding: 14px 4px;
+}
+
+.calCell {
+  border-bottom: 1px solid oklch(0.3 0.02 140);
+  height: 44px;
+  position: relative;
+}
+
+.calCellPlant {
+  background: var(--moss-2) !important;
+}
+
+.calCellHarvest {
+  background: var(--clay) !important;
+}
+
+.calCellBoth {
+  background: linear-gradient(90deg, var(--moss-2) 50%, var(--clay) 50%) !important;
+}
+
+.calLegend {
+  display: flex;
+  gap: 24px;
+  margin-top: 28px;
+  font-size: 13px;
+  color: oklch(0.75 0.02 140);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.calLegend i {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: -2px;
+  border-radius: 2px;
+}
+
+.calLegendSow {
+  background: var(--moss-2);
+}
+
+.calLegendHarvest {
+  background: var(--clay);
+}
+
+.calLegendFrost {
+  margin-left: auto;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 960px) {
+  .calWrap {
+    padding: 32px 20px;
+  }
+  .cal {
+    font-size: 10px;
+    grid-template-columns: 80px repeat(12, 1fr);
+  }
+  .calCrop {
+    font-size: 13px;
+    padding: 12px 3px;
+  }
+}
+
+
+/* ─────────────────────────────────────────
+   03 / SEASONAL PICKS
+───────────────────────────────────────── */
+.picks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.pick {
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  background: var(--paper);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pickImg {
+  position: relative;
+  aspect-ratio: 1;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--clay-wash) 0 6px,
+    oklch(0.92 0.03 55) 6px 12px
+  );
+  border-bottom: 1px solid var(--rule);
+}
+
+.pickImgLabel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--clay);
+  pointer-events: none;
+}
+
+.pickBody {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pickCategory {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.pickName {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 20px;
+  line-height: 1.15;
+  margin: 6px 0 8px;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.pickDesc {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+.pickFoot {
+  margin-top: auto;
+  padding: 14px 18px;
+  border-top: 1px dashed var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.pickPrice {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--ink);
+}
+
+.pickCta {
+  color: var(--moss);
+  transition: color 0.15s;
+}
+
+.pickCta:hover {
+  color: var(--ink);
+}
+
+.affDisclosure {
+  margin-top: 24px;
+  padding: 14px 18px;
+  background: var(--moss-wash);
+  border: 1px dashed var(--moss);
+  border-radius: 10px;
+  font-size: 12px;
+  color: var(--moss);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 960px) {
+  .picks {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .picks {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ─────────────────────────────────────────
+   04 / FIELD JOURNAL
+───────────────────────────────────────── */
+.journal {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 40px;
+}
+
+.journalFeature {
+  /* grid-row: span 1 in prototype — no-op visually; kept for parity */
+}
+
+.journalImg {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--moss-wash) 0 8px,
+    oklch(0.93 0.02 130) 8px 16px
+  );
+  border-radius: 12px;
+  border: 1px solid var(--rule);
+  margin-bottom: 18px;
+}
+
+.journalFeature .journalImg {
+  aspect-ratio: 4 / 3.2;
+}
+
+.journalImgLabel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  color: var(--moss);
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+.journalCategory {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.journalCategoryClay {
+  color: var(--clay);
+}
+
+.journalHeadline {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 28px;
+  line-height: 1.1;
+  margin: 8px 0 10px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.journalFeature .journalHeadline {
+  font-size: 42px;
+}
+
+.journalDek {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.journalByline {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 12px;
+  color: var(--ink-faint);
+}
+
+@media (max-width: 960px) {
+  .journal {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .journalFeature .journalHeadline {
+    font-size: 32px;
+  }
+}
+
+
+/* ─────────────────────────────────────────
+   NEWSLETTER — clay card with concentric circles
+───────────────────────────────────────── */
+.newsSection {
+  border-bottom: 0;
+}
+
+.news {
+  background: var(--clay);
+  color: var(--paper);
+  border-radius: var(--radius-xl);
+  padding: 72px 56px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.news::before {
+  content: "";
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 280px;
+  height: 280px;
+  border: 1px solid oklch(0.95 0.02 60 / 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.news::after {
+  content: "";
+  position: absolute;
+  right: -120px;
+  top: -120px;
+  width: 400px;
+  height: 400px;
+  border: 1px solid oklch(0.95 0.02 60 / 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.newsTitle {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--paper);
+  font-weight: 400;
+}
+
+.newsTitle em {
+  font-style: italic;
+}
+
+.newsLede {
+  font-size: 16px;
+  opacity: 0.92;
+  margin-top: 14px;
+  max-width: 40ch;
+  line-height: 1.5;
+}
+
+.newsTiny {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  margin-top: 14px;
+  opacity: 0.85;
+  text-transform: uppercase;
+}
+
+@media (max-width: 960px) {
+  .news {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 48px 32px;
+  }
+  .newsTitle {
+    font-size: 36px;
+  }
+}
+
+
+/* ─────────────────────────────────────────
+   SHARED LABELS
+───────────────────────────────────────── */
+.sectionLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+  border-top: 2px solid currentColor;
+  padding-top: 0.65rem;
+  display: block;
+}
+
+
+/* ─────────────────────────────────────────
+   THIS MONTH
+───────────────────────────────────────── */
+.month {
+  position: relative;
+  padding-top: 4rem;
+  padding-bottom: 5rem;
+  overflow: hidden;
+}
+
+.monthWatermark {
+  position: absolute;
+  top: -0.15em;
+  right: -0.05em;
+  font-family: var(--font-outfit), sans-serif;
+  font-size: clamp(7rem, 18vw, 17rem);
+  font-weight: 700;
+  color: var(--primary);
+  opacity: 0.04;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.04em;
+}
+
+.monthGrid {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 4rem;
+  align-items: start;
+  margin-top: 2.5rem;
+}
+
+.monthLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.monthHeading {
+  font-size: clamp(2.5rem, 4vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   color: var(--text-primary);
 }
 
-.sectionLink {
+.monthSummary {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.monthLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--primary);
+  transition: var(--transition);
+  margin-top: 0.5rem;
+}
+
+.monthLink:hover {
+  gap: 0.7rem;
+}
+
+.monthRight {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.monthGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.monthGroupLabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--primary);
+  border-top: 1px solid var(--primary);
+  padding-top: 0.6rem;
+}
+
+.monthItems {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.monthItems li {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+  padding-left: 0.85rem;
+  position: relative;
+}
+
+.monthItems li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--secondary);
+  font-size: 0.7rem;
+  top: 0.15em;
+}
+
+@media (max-width: 900px) {
+  .monthGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .monthRight {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .monthRight {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* ─────────────────────────────────────────
+   FEATURED GARDENS
+───────────────────────────────────────── */
+.gardens {
+  padding-bottom: 4rem;
+}
+
+.gardensHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+}
+
+.viewAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+  transition: var(--transition);
+}
+
+.viewAll:hover {
+  gap: 0.55rem;
+}
+
+.gardensGrid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+/* Hero garden card */
+.gardenHero {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  transition: var(--transition);
+  background: #fff;
+}
+
+.gardenHero:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.gardenHeroImgWrap {
+  position: relative;
+  height: 280px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: rgba(45, 90, 39, 0.08);
+}
+
+.gardenHeroImgEl {
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.gardenHero:hover .gardenHeroImgEl {
+  transform: scale(1.03);
+}
+
+.gardenHeroBody {
+  padding: 1.75rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+}
+
+.gardenHeroName {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.gardenHeroLoc {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.gardenHeroDesc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.gardenHeroLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-top: 0.25rem;
+  transition: var(--transition);
+}
+
+.gardenHero:hover .gardenHeroLink {
+  gap: 0.6rem;
+}
+
+/* Side garden cards */
+.gardenSide {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.gardenCard {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  text-decoration: none;
+  transition: var(--transition);
+  min-height: 0;
+  flex: 1;
+}
+
+.gardenCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+}
+
+.gardenCardNum {
+  font-family: var(--font-outfit), sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--primary);
+  opacity: 0.25;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  padding-top: 0.15rem;
+}
+
+.gardenCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.gardenCardName {
+  font-size: 1.1rem;
+  line-height: 1.25;
+  color: var(--text-primary);
   font-weight: 600;
 }
 
-.sectionLink:hover {
-  text-decoration: underline;
+.gardenCardLoc {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+.gardenCardAmenities {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  opacity: 0.75;
+  margin-top: 0.15rem;
+}
+
+.gardenCardThumb {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: rgba(45, 90, 39, 0.06);
+}
+
+.gardenCardThumbImg {
+  object-fit: cover;
+}
+
+/* Availability badge — shared */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  width: fit-content;
+}
+
+.badge[data-status="Available"] {
+  background: rgba(45, 90, 39, 0.1);
+  color: var(--primary);
+}
+
+.badge[data-status="Waitlist"] {
+  background: rgba(212, 163, 115, 0.15);
+  color: #a0622a;
+}
+
+.badge[data-status="Full"] {
+  background: rgba(180, 50, 50, 0.1);
+  color: #c0392b;
+}
+
+.badge[data-status="Unknown"],
+.badge[data-status="Unverified"] {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-secondary);
+}
+
+@media (max-width: 900px) {
+  .gardensGrid {
+    grid-template-columns: 1fr;
+  }
+  .gardenHeroImgWrap {
+    height: 220px;
+  }
+  .gardenSide {
+    flex-direction: row;
+  }
+  .gardenCard {
+    flex: 1;
+  }
+}
+
+@media (max-width: 560px) {
+  .gardenSide {
+    flex-direction: column;
+  }
+}
+
+
+/* ─────────────────────────────────────────
+   THE POTTING SHED — homepage section
+───────────────────────────────────────── */
+.shed {
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+}
+
+.shedHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   gap: 2rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.shedTitle {
+  font-family: var(--font-playfair), serif;
+  font-size: clamp(2.25rem, 3.5vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  margin-top: 0.75rem;
+  font-weight: 700;
+}
+
+.shedSubtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+  max-width: 480px;
+  line-height: 1.55;
+}
+
+.shedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .shedGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .shedGrid {
+    grid-template-columns: 1fr;
+  }
+  .shedHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

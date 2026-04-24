@@ -33,4 +33,5 @@ export interface Nursery {
   specialties: string[];
   imageUrl: string;
   website: string;
+  featured?: boolean;
 }

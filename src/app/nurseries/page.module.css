@@ -1,6 +1,19 @@
 .header {
-  padding: 4rem 0 3rem;
+  padding: 4rem 0 2rem;
   max-width: 800px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--secondary);
+  background: rgba(212, 163, 115, 0.15);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
 }
 
 .title {
@@ -15,11 +28,31 @@
   line-height: 1.6;
 }
 
+.featuredSection,
+.listedSection {
+  padding-bottom: 3rem;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 1.25rem;
+}
+
+.listedSection .sectionLabel {
+  color: var(--text-secondary);
+}
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2.5rem;
-  padding-bottom: 4rem;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem;
 }
 
 .card {
@@ -36,8 +69,48 @@
   border-color: var(--secondary);
 }
 
-.imagePlaceholder {
+.cardFeatured {
+  border: 2px solid var(--secondary);
+  box-shadow: 0 12px 40px 0 rgba(212, 163, 115, 0.25);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(212, 163, 115, 0.12) 100%);
+}
+
+.imageWrapper {
+  position: relative;
   height: 220px;
+  overflow: hidden;
+  background: var(--bg-color);
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+.featuredBadge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--secondary);
+  color: #fff;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: 0 4px 12px rgba(212, 163, 115, 0.4);
+}
+
+.imagePlaceholder {
+  height: 100%;
   background: linear-gradient(135deg, var(--secondary) 0%, #a67c52 100%);
   display: flex;
   align-items: center;

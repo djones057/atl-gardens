@@ -4,9 +4,13 @@ import AffiliateCarousel from "@/components/AffiliateCarousel";
 import styles from "./page.module.css";
 import { MapPin, Globe, CheckCircle2, Clock, Sprout } from "lucide-react";
 import { notFound } from "next/navigation";
+import Image from "next/image";
+
+export function generateStaticParams() {
+  return gardens.map((g) => ({ id: g.id }));
+}
 
 export default async function GardenDetail({ params }: { params: Promise<{ id: string }> }) {
-  // Await params as required in Next 15 App router
   const { id } = await params;
   const garden = gardens.find((g) => g.id === id);
 
@@ -21,9 +25,20 @@ export default async function GardenDetail({ params }: { params: Promise<{ id: s
   return (
     <div className="container">
       <div className={styles.hero}>
-        <div className={styles.imagePlaceholder}>
-          <Sprout size={64} className={styles.placeholderIcon} />
-        </div>
+        {garden.imageUrl ? (
+          <Image
+            src={garden.imageUrl}
+            alt={garden.name}
+            fill
+            priority
+            sizes="100vw"
+            className={styles.heroImage}
+          />
+        ) : (
+          <div className={styles.imagePlaceholder}>
+            <Sprout size={64} className={styles.placeholderIcon} />
+          </div>
+        )}
       </div>
 
       <div className={styles.content}>

@@ -18,7 +18,7 @@ export default function Footer() {
               <span>ATL Gardens</span>
             </div>
             <p className={styles.description}>
-              Connecting Atlanta's communities through sustainable urban agriculture.
+              Connecting Atlanta&rsquo;s communities through sustainable urban agriculture.
             </p>
           </div>
           
@@ -27,6 +27,7 @@ export default function Footer() {
               <h3>Explore</h3>
               <Link href="/gardens">All Gardens</Link>
               <Link href="/nurseries">Local Nurseries</Link>
+              <Link href="/guides">Gardening Guides</Link>
               <Link href="/gear">Recommended Gear</Link>
             </div>
             <div className={styles.column}>

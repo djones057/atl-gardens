@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const inter = Inter({
@@ -16,9 +18,6 @@ export const metadata: Metadata = {
   title: "ATL Community Gardens",
   description: "Discover community gardens across Atlanta. Find plots, connect with local gardeners, and get the best gear for your gardening journey.",
 };
-
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
 export default function RootLayout({
   children,

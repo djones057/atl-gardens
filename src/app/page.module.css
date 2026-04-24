@@ -88,6 +88,7 @@
 .heroMedia {
   position: relative;
   overflow: hidden;
+  margin-right: max(0rem, calc(50vw - 600px + 1.5rem));
 }
 
 .heroImg {

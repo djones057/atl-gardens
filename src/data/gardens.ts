@@ -32,6 +32,8 @@ export const gardens: Garden[] = [
       "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop",
     website: "https://piedmontpark.org/programs/",
     visitingHours: "Park hours, 6:00 AM - 11:00 PM",
+    phone: "404-875-7275",
+    operator: "Piedmont Park Conservancy",
     verified: true,
   },
   {
@@ -99,6 +101,9 @@ export const gardens: Garden[] = [
     visitingHours: "Community workdays: 2nd Saturday monthly, 9:00 AM - 12:00 PM",
     membershipCost: "$50/year per plot",
     foundingYear: 2006,
+    phone: "404-946-6394",
+    email: "admin@bhnp.org",
+    operator: "Blue Heron Nature Preserve",
     verified: true,
   },
   {
@@ -536,5 +541,214 @@ export const gardens: Garden[] = [
     visitingHours: "Park hours, dawn to dusk",
     foundingYear: 2012,
     verified: true,
+  },
+  {
+    id: "g41",
+    name: "North Fulton Community Garden",
+    neighborhood: "Sandy Springs",
+    zipCode: "30350",
+    address: "7741 Roswell Rd, Atlanta, GA 30350",
+    description:
+      "Structured-plot community garden run through UGA Extension Fulton County on Roswell Road.",
+    plotAvailability: "Unknown",
+    amenities: ["Raised plots", "Extension programs"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop",
+    phone: "404-613-7670",
+    operator: "UGA Extension Fulton County",
+    verified: true,
+  },
+  {
+    id: "g42",
+    name: "Camp Truitt Community Garden",
+    neighborhood: "College Park",
+    zipCode: "30337",
+    address: "4300 Herschel Rd, College Park, GA 30337",
+    description:
+      "South-metro community garden site run by UGA Extension Fulton County at Camp Truitt in College Park.",
+    plotAvailability: "Unknown",
+    amenities: ["Plots", "Extension programs"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=800&auto=format&fit=crop",
+    phone: "404-762-4085",
+    operator: "UGA Extension Fulton County",
+    verified: true,
+  },
+  {
+    id: "g43",
+    name: "Urban Food Forest at Browns Mill",
+    neighborhood: "Lakewood",
+    zipCode: "30354",
+    address: "3180 Browns Mill Rd SE, Atlanta, GA 30354",
+    description:
+      "The largest publicly-owned food forest in the U.S. — 7.1 acres of free public fruit trees, nut trees, and edible natives on Atlanta's Southside.",
+    plotAvailability: "Unknown",
+    amenities: ["Food forest", "Fruit trees", "Nut trees", "Public access"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1530836369250-ef71a3f5e481?q=80&w=800&auto=format&fit=crop",
+    operator: "City of Atlanta / The Conservation Fund / Food Well Alliance",
+    verified: true,
+  },
+  {
+    id: "g44",
+    name: "Decatur Legacy Park Garden",
+    neighborhood: "Decatur",
+    zipCode: "30030",
+    address: "500 S Columbia Dr, Decatur, GA 30030",
+    description:
+      "Community garden inside Decatur's Legacy Park, run by City of Decatur Parks & Recreation.",
+    plotAvailability: "Unknown",
+    amenities: ["Plots", "Public park"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1558904541-efa843a96f0a?q=80&w=800&auto=format&fit=crop",
+    operator: "City of Decatur Parks & Recreation",
+    verified: true,
+  },
+  {
+    id: "g45",
+    name: "East Point Community Garden",
+    neighborhood: "East Point",
+    zipCode: "30344",
+    address: "East Point, GA 30344",
+    description:
+      "City-run community garden in East Point. Listing details are still being verified — contact City of East Point for address, plot availability, and hours.",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=800&auto=format&fit=crop",
+    operator: "City of East Point",
+    verified: false,
+  },
+  {
+    id: "g46",
+    name: "College Park Community Garden",
+    neighborhood: "College Park",
+    zipCode: "30337",
+    address: "College Park, GA 30337",
+    description:
+      "City-run community garden in College Park. Listing details are still being verified — contact City of College Park for address, plot availability, and hours.",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1416879598555-21d3f9e7c37b?q=80&w=800&auto=format&fit=crop",
+    operator: "City of College Park",
+    verified: false,
+  },
+  {
+    id: "g47",
+    name: "Hapeville Community Garden",
+    neighborhood: "Hapeville",
+    zipCode: "30354",
+    address: "Hapeville, GA 30354",
+    description:
+      "City-run community garden in Hapeville. Listing details are still being verified — contact City of Hapeville for address, plot availability, and hours.",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1592484043432-1b1f618a3854?q=80&w=800&auto=format&fit=crop",
+    operator: "City of Hapeville",
+    verified: false,
+  },
+  {
+    id: "g48",
+    name: "Alpharetta Community Garden",
+    neighborhood: "Alpharetta",
+    zipCode: "30009",
+    address: "Alpharetta, GA 30009",
+    description:
+      "City-run community garden in Alpharetta. Listing details are still being verified — contact City of Alpharetta for address, plot availability, and hours.",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?q=80&w=800&auto=format&fit=crop",
+    operator: "City of Alpharetta",
+    verified: false,
+  },
+  {
+    id: "g49",
+    name: "Acworth Community Garden",
+    neighborhood: "Acworth",
+    zipCode: "30101",
+    address: "Acworth, GA 30101",
+    description:
+      "City-run community garden in Acworth (Cherokee County). Listing details are still being verified — contact City of Acworth for address, plot availability, and hours.",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=800&auto=format&fit=crop",
+    operator: "City of Acworth",
+    verified: false,
+  },
+  {
+    id: "g50",
+    name: "Ashford Park Community Garden",
+    neighborhood: "Brookhaven",
+    zipCode: "30319",
+    address: "Brookhaven, GA 30319",
+    description:
+      "City-run community garden in Brookhaven's Ashford Park neighborhood. Listing details are still being verified — contact City of Brookhaven Parks for address, plot availability, and hours.",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=800&auto=format&fit=crop",
+    operator: "City of Brookhaven",
+    verified: false,
+  },
+  {
+    id: "g51",
+    name: "Norris Lake Community Garden",
+    neighborhood: "Norcross",
+    zipCode: "30071",
+    address: "Norcross, GA 30071",
+    description:
+      "HOA-run community garden in the Norris Lake neighborhood of Norcross (Gwinnett County). Listing details are still being verified.",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop",
+    operator: "Norris Lake HOA",
+    verified: false,
+  },
+  {
+    id: "g52",
+    name: "Campbellton Community Garden",
+    neighborhood: "Cascade",
+    zipCode: "30311",
+    address: "Campbellton Rd SW, Atlanta, GA",
+    description:
+      "Community garden on Campbellton Road in southwest Atlanta. Listing details are still being verified — specific address and contact not yet confirmed.",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1416879598555-21d3f9e7c37b?q=80&w=800&auto=format&fit=crop",
+    verified: false,
+  },
+  {
+    id: "g53",
+    name: "A Sip of Paradise Garden",
+    neighborhood: "Atlanta",
+    zipCode: "",
+    address: "Atlanta, GA",
+    description:
+      "Faith-based community garden in Atlanta. Listing details are still being verified — specific address and operating church not yet confirmed.",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=800&auto=format&fit=crop",
+    verified: false,
+  },
+  {
+    id: "g54",
+    name: "Astro-Fain Community Garden",
+    neighborhood: "Atlanta",
+    zipCode: "",
+    address: "Atlanta, GA",
+    description:
+      "Community garden in Atlanta. Listing details are still being verified — specific address and operator not yet confirmed.",
+    plotAvailability: "Unknown",
+    amenities: [],
+    imageUrl:
+      "https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?q=80&w=800&auto=format&fit=crop",
+    verified: false,
   },
 ];

@@ -14,6 +14,9 @@ export interface Garden {
   rules?: string[];
   foundingYear?: number;
   verified?: boolean;
+  phone?: string;
+  email?: string;
+  operator?: string;
 }
 
 export interface Nursery {

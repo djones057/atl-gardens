@@ -29,6 +29,7 @@ export default function Footer() {
               <Link href="/nurseries">Local Nurseries</Link>
               <Link href="/guides">Gardening Guides</Link>
               <Link href="/gear">Recommended Gear</Link>
+              <Link href="/newsletter">Newsletter</Link>
             </div>
             <div className={styles.column}>
               <h3>About</h3>

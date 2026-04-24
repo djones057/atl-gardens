@@ -109,3 +109,26 @@
 .successIcon {
   flex-shrink: 0;
 }
+
+.errorMessage {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #c0392b;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.compact .content {
+  gap: 0.75rem;
+}
+
+.compact .title {
+  font-size: 1.15rem;
+  margin-bottom: 0.25rem;
+}

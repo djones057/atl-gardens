@@ -13,7 +13,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/gear",
     "/guides",
     "/guides/planting-calendar",
+    "/guides/first-season",
     "/about",
+    "/newsletter",
   ].map((path) => ({
     url: `${siteUrl}${path}`,
     lastModified: now,

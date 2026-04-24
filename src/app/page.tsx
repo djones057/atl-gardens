@@ -4,6 +4,7 @@ import { gardens } from "@/data/gardens";
 import { products } from "@/data/products";
 import GardenCard from "@/components/GardenCard";
 import AffiliateCarousel from "@/components/AffiliateCarousel";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import { plantingCalendar } from "@/data/plantingCalendar";
 import { Calendar, MapPin, Sprout } from "lucide-react";
 
@@ -115,6 +116,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <NewsletterSignup />
 
       <AffiliateCarousel products={products.slice(0, 4)} />
     </div>

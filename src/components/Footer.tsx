@@ -1,51 +1,63 @@
-import styles from "./Footer.module.css";
-import { Leaf } from "lucide-react";
 import Link from "next/link";
-import NewsletterSignup from "./NewsletterSignup";
+import styles from "./Footer.module.css";
 
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={`container ${styles.container}`}>
-        <div className={styles.newsletterSection}>
-          <NewsletterSignup />
-        </div>
-        
-        <div className={styles.brandLinksContainer}>
-          <div className={styles.brand}>
-            <div className={styles.logo}>
-              <Leaf className={styles.logoIcon} aria-hidden="true" />
-              <span>ATL Gardens</span>
+      <div className={`shell ${styles.inner}`}>
+        <div className={styles.grid}>
+          <div className={styles.brandCol}>
+            <div className={styles.brand}>
+              Grow something <em>together</em>.
             </div>
-            <p className={styles.description}>
-              Connecting Atlanta&rsquo;s communities through sustainable urban agriculture.
-            </p>
-          </div>
-          
-          <div className={styles.links}>
-            <div className={styles.column}>
-              <h3>Explore</h3>
-              <Link href="/gardens">All Gardens</Link>
-              <Link href="/nurseries">Local Nurseries</Link>
-              <Link href="/guides">Gardening Guides</Link>
-              <Link href="/potting-shed">The Potting Shed</Link>
-              <Link href="/newsletter">Newsletter</Link>
-            </div>
-            <div className={styles.column}>
-              <h3>About</h3>
-              <Link href="/about">About Us</Link>
-              <a href="mailto:hello@atlgardens.com">Add a Garden</a>
-              <a href="mailto:partnerships@atlgardens.com">Nursery Partnership</a>
-              <a href="mailto:corrections@atlgardens.com">Corrections</a>
+            <div className={styles.contact}>
+              Atlanta, GA · hello@atlgardens.com
             </div>
           </div>
+
+          <div className={styles.col}>
+            <h5>Directory</h5>
+            <ul>
+              <li><Link href="/gardens">All gardens</Link></li>
+              <li><Link href="/gardens">By neighborhood</Link></li>
+              <li><Link href="/gardens">Open plots</Link></li>
+              <li>
+                <a href="mailto:hello@atlgardens.com?subject=Add%20a%20garden">
+                  Add a garden
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className={styles.col}>
+            <h5>Learn</h5>
+            <ul>
+              <li><Link href="/guides/planting-calendar">Growing calendar</Link></li>
+              <li><Link href="/guides/first-season">Beginner guides</Link></li>
+              <li><Link href="/potting-shed">Seasonal picks</Link></li>
+              <li><Link href="/guides">Field journal</Link></li>
+            </ul>
+          </div>
+
+          <div className={styles.col}>
+            <h5>About</h5>
+            <ul>
+              <li><Link href="/about">Our mission</Link></li>
+              <li><Link href="/about">Affiliate disclosure</Link></li>
+              <li>
+                <a href="mailto:partnerships@atlgardens.com">Partner with us</a>
+              </li>
+              <li><Link href="/newsletter">Newsletter</Link></li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div className={styles.bottom}>
-        <p className={styles.disclosure}>
-          As an Amazon Associate, ATL Gardens earns from qualifying purchases.
-        </p>
-        <p>&copy; {new Date().getFullYear()} Atlanta Community Gardens Directory. All rights reserved.</p>
+
+        <div className={styles.bottom}>
+          <span>
+            © {new Date().getFullYear()} ATL Community Gardens · Built by volunteers
+          </span>
+          <span>v 0.1 · Updated weekly</span>
+        </div>
       </div>
     </footer>
   );

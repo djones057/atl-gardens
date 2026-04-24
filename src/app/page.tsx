@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
+import { gardens } from "@/data/gardens";
 
 type DirTag = { label: string; variant?: "open" | "full" };
 type DirEntry = {
@@ -148,6 +149,9 @@ const MAP_PINS = [
 ] as const;
 
 export default function Home() {
+  const gardenCount = gardens.length;
+  const neighborhoodCount = new Set(gardens.map((g) => g.neighborhood)).size;
+
   return (
     <>
       {/* ─── HERO ─── */}
@@ -156,7 +160,7 @@ export default function Home() {
           <div className={styles.heroText}>
             <div className={styles.heroEyebrow}>
               <span className={styles.heroEyebrowDot} aria-hidden="true" />
-              A directory&nbsp;·&nbsp;142 gardens&nbsp;·&nbsp;28 neighborhoods
+              A directory&nbsp;·&nbsp;{gardenCount} gardens&nbsp;·&nbsp;{neighborhoodCount} neighborhoods
             </div>
 
             <h1 className={styles.heroTitle}>
@@ -196,16 +200,16 @@ export default function Home() {
 
             <dl className={styles.heroStats}>
               <div className={styles.heroStat}>
-                <dt className={styles.heroStatNum}>142</dt>
+                <dt className={styles.heroStatNum}>{gardenCount}</dt>
                 <dd className={styles.heroStatLabel}>gardens listed</dd>
               </div>
               <div className={styles.heroStat}>
-                <dt className={styles.heroStatNum}>38</dt>
-                <dd className={styles.heroStatLabel}>open for volunteers</dd>
+                <dt className={styles.heroStatNum}>{neighborhoodCount}</dt>
+                <dd className={styles.heroStatLabel}>neighborhoods</dd>
               </div>
               <div className={styles.heroStat}>
-                <dt className={styles.heroStatNum}>17</dt>
-                <dd className={styles.heroStatLabel}>plots available now</dd>
+                <dt className={styles.heroStatNum}>12</dt>
+                <dd className={styles.heroStatLabel}>months of tips</dd>
               </div>
             </dl>
           </div>
@@ -416,7 +420,7 @@ export default function Home() {
 
           <div className={styles.dirMore}>
             <Link href="/gardens" className={styles.dirMoreLink}>
-              See all 142 gardens →
+              See all {gardenCount} gardens →
             </Link>
           </div>
         </div>

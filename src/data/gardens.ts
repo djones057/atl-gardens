@@ -10,7 +10,7 @@ export const gardens: Garden[] = [
     description: "A vibrant community space focusing on sustainable agriculture and environmental education. Features individual plots, a fruit orchard, and community events.",
     plotAvailability: "Waitlist",
     amenities: ["Water access", "Compost bins", "Tool shed", "Classes"],
-    imageUrl: "https://images.unsplash.com/photo-1585320806297-9794b3e4ce18?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1416879598555-21d3f9e7c37b?q=80&w=800&auto=format&fit=crop",
     website: "https://wyldecenter.org/oakhurst-garden/",
     visitingHours: "Daily, Sunrise to Sunset",
     membershipCost: "$45/year for a 4x8 plot",
@@ -27,7 +27,7 @@ export const gardens: Garden[] = [
     description: "Located in the heart of Atlanta's premier park, offering sunny plots and a strong community of urban farmers.",
     plotAvailability: "Full",
     amenities: ["Wheelchair accessible", "Water access", "Fenced", "Shed"],
-    imageUrl: "https://images.unsplash.com/photo-1595841696677-6489a744cb4d?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop",
     website: "https://piedmontpark.org/",
     visitingHours: "Park Hours (6:00 AM - 11:00 PM)",
     membershipCost: "$50/year (Residents only)",
@@ -154,7 +154,7 @@ export const gardens: Garden[] = [
     description: "A community garden in the West End area. Listing details are still being verified — contact the garden directly for plot availability, membership, and hours.",
     plotAvailability: "Unknown",
     amenities: [],
-    imageUrl: "https://images.unsplash.com/photo-1585320806297-9794b3e4ce18?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1416879598555-21d3f9e7c37b?q=80&w=800&auto=format&fit=crop",
     verified: false
   },
   {
@@ -166,7 +166,7 @@ export const gardens: Garden[] = [
     description: "A community garden in the Lake Claire area. Listing details are still being verified — contact the garden directly for plot availability, membership, and hours.",
     plotAvailability: "Unknown",
     amenities: [],
-    imageUrl: "https://images.unsplash.com/photo-1595841696677-6489a744cb4d?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop",
     verified: false
   },
   {
@@ -274,7 +274,7 @@ export const gardens: Garden[] = [
     description: "A community garden in the Bankhead area. Listing details are still being verified — contact the garden directly for plot availability, membership, and hours.",
     plotAvailability: "Unknown",
     amenities: [],
-    imageUrl: "https://images.unsplash.com/photo-1585320806297-9794b3e4ce18?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1416879598555-21d3f9e7c37b?q=80&w=800&auto=format&fit=crop",
     verified: false
   },
   {
@@ -286,7 +286,7 @@ export const gardens: Garden[] = [
     description: "A community garden in the Adair Park area. Listing details are still being verified — contact the garden directly for plot availability, membership, and hours.",
     plotAvailability: "Unknown",
     amenities: [],
-    imageUrl: "https://images.unsplash.com/photo-1595841696677-6489a744cb4d?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop",
     verified: false
   },
   {
@@ -394,7 +394,7 @@ export const gardens: Garden[] = [
     description: "A community garden in the Grant Park area. Listing details are still being verified — contact the garden directly for plot availability, membership, and hours.",
     plotAvailability: "Unknown",
     amenities: [],
-    imageUrl: "https://images.unsplash.com/photo-1585320806297-9794b3e4ce18?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1416879598555-21d3f9e7c37b?q=80&w=800&auto=format&fit=crop",
     verified: false
   },
   {
@@ -406,7 +406,7 @@ export const gardens: Garden[] = [
     description: "A community garden in the South Downtown area. Listing details are still being verified — contact the garden directly for plot availability, membership, and hours.",
     plotAvailability: "Unknown",
     amenities: [],
-    imageUrl: "https://images.unsplash.com/photo-1595841696677-6489a744cb4d?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop",
     verified: false
   },
   {

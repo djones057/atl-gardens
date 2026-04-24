@@ -6,7 +6,7 @@ export const products: AffiliateProduct[] = [
     title: "Heavy Duty Gardening Gloves",
     description: "Puncture-resistant, breathable gloves perfect for weeding and pruning.",
     category: "Gear",
-    imageUrl: "https://images.unsplash.com/photo-1599685315640-4a8d32bfd7dd?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?q=80&w=800&auto=format&fit=crop",
     affiliateUrl: "https://amazon.com/placeholder-gloves",
     price: "$14.99"
   },

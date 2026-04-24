@@ -10,7 +10,7 @@ export const gardens: Garden[] = [
     description: "A vibrant community space focusing on sustainable agriculture and environmental education. Features individual plots, a fruit orchard, and community events.",
     plotAvailability: "Waitlist",
     amenities: ["Water access", "Compost bins", "Tool shed", "Classes"],
-    imageUrl: "https://images.unsplash.com/photo-1416879598555-21d3f9e7c37b?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1530836369250-ef71a3f5e481?q=80&w=800&auto=format&fit=crop",
     website: "https://wyldecenter.org/oakhurst-garden/",
     visitingHours: "Daily, Sunrise to Sunset",
     membershipCost: "$45/year for a 4x8 plot",

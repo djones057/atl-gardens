@@ -4,7 +4,6 @@ import Image from "next/image";
 import { gardens } from "@/data/gardens";
 import { products } from "@/data/products";
 import AffiliateCarousel from "@/components/AffiliateCarousel";
-import NewsletterSignup from "@/components/NewsletterSignup";
 import { plantingCalendar } from "@/data/plantingCalendar";
 import { ArrowRight, MapPin, CheckCircle2, Clock, Ban, HelpCircle } from "lucide-react";
 import type { Garden } from "@/types";
@@ -216,11 +215,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* ─── NEWSLETTER ─── */}
-      <div className="container">
-        <NewsletterSignup />
-      </div>
 
       {/* ─── GEAR ─── */}
       <div className="container">

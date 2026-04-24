@@ -76,6 +76,49 @@ const PICKS: Pick[] = [
   },
 ];
 
+type JournalEntry = {
+  id: string;
+  category: string;
+  categoryVariant?: "clay";
+  headline: string;
+  dek: string;
+  byline: string;
+  phLabel: string;
+  feature?: boolean;
+};
+
+const JOURNAL: JournalEntry[] = [
+  {
+    id: "browns-mill",
+    category: "Long read · 12 min",
+    categoryVariant: "clay",
+    headline:
+      "How a vacant lot in Pittsburgh neighborhood became 80 people's dinner table.",
+    dek:
+      "The story of Browns Mill Food Forest — the largest publicly-owned food forest in the U.S. — and the volunteers who turned seven acres of kudzu into pecan, pawpaw, and persimmon.",
+    byline: "By M. Ellis · April 2026",
+    phLabel: "[ cover — raised beds at dawn ]",
+    feature: true,
+  },
+  {
+    id: "red-clay",
+    category: "Guide",
+    headline: "Working with Georgia red clay (without cursing at it).",
+    dek: "Five amendments, a lasagna-bed recipe, and the one mistake almost every new gardener in ATL makes.",
+    byline: "6 min read",
+    phLabel: "[ photo — clay soil ]",
+  },
+  {
+    id: "compost-coop",
+    category: "Spotlight",
+    headline:
+      "The Compost Coop in East Atlanta is quietly diverting 40 tons a year.",
+    dek: "How a $30 monthly membership turns food scraps into the best topsoil in the neighborhood.",
+    byline: "4 min read",
+    phLabel: "[ photo — compost pile ]",
+  },
+];
+
 type CellState = "empty" | "plant" | "harvest" | "both";
 
 const MONTHS_SHORT = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] as const;
@@ -425,6 +468,47 @@ export default function Home() {
             Disclosure — Some links in this section are affiliate links. We only list
             things we&rsquo;d hand to a friend on their first day at the plot. Nothing is
             sponsored.
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 04 / FIELD JOURNAL ─── */}
+      <section id="journal" className={styles.sec}>
+        <div className="shell">
+          <div className={styles.secHead}>
+            <div>
+              <div className={styles.secNum}>04 / Field journal</div>
+              <h2 className={styles.secTitle}>
+                Notes from the <em>plot</em>.
+              </h2>
+            </div>
+            <p className={styles.secIntro}>
+              Short, practical writing about gardening in Atlanta — red clay, humidity,
+              kudzu, and the people who grow through it anyway.
+            </p>
+          </div>
+
+          <div className={styles.journal}>
+            {JOURNAL.map((j) => (
+              <article
+                key={j.id}
+                className={j.feature ? styles.journalFeature : undefined}
+              >
+                <div className={styles.journalImg} aria-hidden="true">
+                  <span className={styles.journalImgLabel}>{j.phLabel}</span>
+                </div>
+                <div
+                  className={`${styles.journalCategory} ${
+                    j.categoryVariant === "clay" ? styles.journalCategoryClay : ""
+                  }`}
+                >
+                  {j.category}
+                </div>
+                <h3 className={styles.journalHeadline}>{j.headline}</h3>
+                <p className={styles.journalDek}>{j.dek}</p>
+                <p className={styles.journalByline}>{j.byline}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

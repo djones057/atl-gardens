@@ -802,6 +802,100 @@
 
 
 /* ─────────────────────────────────────────
+   04 / FIELD JOURNAL
+───────────────────────────────────────── */
+.journal {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 40px;
+}
+
+.journalFeature {
+  /* grid-row: span 1 in prototype — no-op visually; kept for parity */
+}
+
+.journalImg {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--moss-wash) 0 8px,
+    oklch(0.93 0.02 130) 8px 16px
+  );
+  border-radius: 12px;
+  border: 1px solid var(--rule);
+  margin-bottom: 18px;
+}
+
+.journalFeature .journalImg {
+  aspect-ratio: 4 / 3.2;
+}
+
+.journalImgLabel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  color: var(--moss);
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+.journalCategory {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.journalCategoryClay {
+  color: var(--clay);
+}
+
+.journalHeadline {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 28px;
+  line-height: 1.1;
+  margin: 8px 0 10px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.journalFeature .journalHeadline {
+  font-size: 42px;
+}
+
+.journalDek {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.journalByline {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 12px;
+  color: var(--ink-faint);
+}
+
+@media (max-width: 960px) {
+  .journal {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .journalFeature .journalHeadline {
+    font-size: 32px;
+  }
+}
+
+
+/* ─────────────────────────────────────────
    SHARED LABELS
 ───────────────────────────────────────── */
 .sectionLabel {

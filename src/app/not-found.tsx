@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Sprout, ArrowLeft, Search, Calendar } from "lucide-react";
 import styles from "./not-found.module.css";
+
+export const metadata: Metadata = {
+  title: "Page Not Found",
+  description: "This page doesn't exist — but Atlanta's community gardens do. Find yours.",
+};
 
 export default function NotFound() {
   return (

@@ -4,7 +4,7 @@ import { Leaf, Mail, ShieldCheck, HandHeart } from "lucide-react";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "About ATL Community Gardens",
+  title: "About",
   description:
     "About ATL Community Gardens — how we maintain the directory, how we make money, and how to get involved.",
 };

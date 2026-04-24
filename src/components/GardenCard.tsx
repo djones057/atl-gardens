@@ -1,6 +1,6 @@
 import { Garden } from "../types";
 import styles from "./GardenCard.module.css";
-import { MapPin, Sprout, CheckCircle2, Clock, HelpCircle, Info } from "lucide-react";
+import { MapPin, Sprout, CheckCircle2, Clock, HelpCircle, Info, Ban } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -38,6 +38,7 @@ export default function GardenCard({ garden }: Props) {
           <div className={styles.badge} data-status={garden.plotAvailability}>
             {garden.plotAvailability === "Available" && <CheckCircle2 size={14} />}
             {garden.plotAvailability === "Waitlist" && <Clock size={14} />}
+            {garden.plotAvailability === "Full" && <Ban size={14} />}
             {garden.plotAvailability === "Unknown" && <HelpCircle size={14} />}
             {garden.plotAvailability}
           </div>

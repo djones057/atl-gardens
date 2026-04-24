@@ -2,7 +2,7 @@ import { gardens } from "@/data/gardens";
 import { products } from "@/data/products";
 import AffiliateCarousel from "@/components/AffiliateCarousel";
 import styles from "./page.module.css";
-import { MapPin, Globe, CheckCircle2, Clock, Sprout, HelpCircle, Info } from "lucide-react";
+import { MapPin, Globe, CheckCircle2, Clock, Sprout, HelpCircle, Info, Ban } from "lucide-react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import type { Metadata } from "next";
@@ -90,6 +90,7 @@ export default async function GardenDetail({ params }: { params: Promise<{ id: s
               <div className={styles.badge} data-status={garden.plotAvailability}>
                 {garden.plotAvailability === "Available" && <CheckCircle2 size={16} />}
                 {garden.plotAvailability === "Waitlist" && <Clock size={16} />}
+                {garden.plotAvailability === "Full" && <Ban size={16} />}
                 {garden.plotAvailability === "Unknown" && <HelpCircle size={16} />}
                 {garden.plotAvailability}
               </div>
@@ -198,9 +199,14 @@ export default async function GardenDetail({ params }: { params: Promise<{ id: s
                 : "Reach out to the garden directly using their website or contact info to learn how to get involved."}
             </p>
             {isVerified && (
-              <button className={styles.btnPrimary}>
+              <a
+                href={garden.website ?? `mailto:hello@atlgardens.com?subject=Plot inquiry — ${encodeURIComponent(garden.name)}`}
+                target={garden.website ? "_blank" : undefined}
+                rel={garden.website ? "noopener noreferrer" : undefined}
+                className={styles.btnPrimary}
+              >
                 {garden.plotAvailability === "Available" ? "Apply for a Plot" : "Join Waitlist"}
-              </button>
+              </a>
             )}
             {garden.website && !isVerified && (
               <a

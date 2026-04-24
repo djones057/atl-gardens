@@ -61,21 +61,31 @@ export default function GuidesIndex() {
       </header>
 
       <div className={styles.grid}>
-        {guides.map(({ href, icon: Icon, title, description, badge, available }) => (
-          <Link
-            key={title}
-            href={href}
-            className={`glass-panel ${styles.card} ${!available ? styles.cardDisabled : ""}`}
-            aria-disabled={!available}
-          >
-            <div className={styles.cardIcon}>
-              <Icon size={28} />
+        {guides.map(({ href, icon: Icon, title, description, badge, available }) =>
+          available ? (
+            <Link
+              key={title}
+              href={href}
+              className={`glass-panel ${styles.card}`}
+            >
+              <div className={styles.cardIcon}><Icon size={28} /></div>
+              <div className={styles.cardBadge}>{badge}</div>
+              <h2 className={styles.cardTitle}>{title}</h2>
+              <p className={styles.cardDescription}>{description}</p>
+            </Link>
+          ) : (
+            <div
+              key={title}
+              className={`glass-panel ${styles.card} ${styles.cardDisabled}`}
+              aria-label={`${title} — coming soon`}
+            >
+              <div className={styles.cardIcon}><Icon size={28} /></div>
+              <div className={styles.cardBadge}>{badge}</div>
+              <h2 className={styles.cardTitle}>{title}</h2>
+              <p className={styles.cardDescription}>{description}</p>
             </div>
-            <div className={styles.cardBadge}>{badge}</div>
-            <h2 className={styles.cardTitle}>{title}</h2>
-            <p className={styles.cardDescription}>{description}</p>
-          </Link>
-        ))}
+          )
+        )}
       </div>
     </div>
   );

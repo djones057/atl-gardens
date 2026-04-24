@@ -254,4 +254,55 @@
 .affiliateSection {
   border-top: 1px solid rgba(0,0,0,0.1);
   margin-top: 2rem;
+  padding: 3rem 0 5rem;
+}
+
+.affiliateHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.affiliateTitle {
+  font-family: var(--font-playfair), serif;
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.affiliateViewAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+  transition: var(--transition);
+}
+
+.affiliateViewAll:hover {
+  gap: 0.55rem;
+}
+
+.affiliateGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .affiliateGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .affiliateGrid {
+    grid-template-columns: 1fr;
+  }
 }

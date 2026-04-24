@@ -207,8 +207,8 @@ export default function FirstSeasonGuide() {
               what to plant this month
             </Link>
             , and see our{" "}
-            <Link href="/gear" className={styles.inlineLink}>recommended gear</Link> for the tools we
-            actually use.
+            <Link href="/potting-shed" className={styles.inlineLink}>The Potting Shed</Link> for
+            the tools we actually use.
           </p>
         </section>
       </article>

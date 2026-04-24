@@ -570,3 +570,61 @@
     flex-direction: column;
   }
 }
+
+
+/* ─────────────────────────────────────────
+   THE POTTING SHED — homepage section
+───────────────────────────────────────── */
+.shed {
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+}
+
+.shedHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.shedTitle {
+  font-family: var(--font-playfair), serif;
+  font-size: clamp(2.25rem, 3.5vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  margin-top: 0.75rem;
+  font-weight: 700;
+}
+
+.shedSubtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+  max-width: 480px;
+  line-height: 1.55;
+}
+
+.shedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .shedGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .shedGrid {
+    grid-template-columns: 1fr;
+  }
+  .shedHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

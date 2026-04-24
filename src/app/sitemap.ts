@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/gardens",
     "/nurseries",
-    "/gear",
+    "/potting-shed",
     "/guides",
     "/guides/planting-calendar",
     "/guides/first-season",

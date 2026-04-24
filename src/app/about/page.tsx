@@ -57,8 +57,8 @@ export default function AboutPage() {
           <h2>How we make money</h2>
           <p>
             Two ways, both disclosed. Our{" "}
-            <Link href="/gear" className={styles.link}>gear page</Link> uses Amazon affiliate
-            links — we earn a small commission when you buy, at no cost to you. Select nurseries
+            <Link href="/potting-shed" className={styles.link}>Potting Shed</Link> uses Amazon
+            affiliate links — we earn a small commission when you buy, at no cost to you. Select nurseries
             pay to appear as <strong>Featured Partners</strong> on our{" "}
             <Link href="/nurseries" className={styles.link}>nursery page</Link>, with their
             status clearly marked. The garden directory itself is, and will stay, free.

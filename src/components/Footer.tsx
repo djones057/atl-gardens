@@ -28,7 +28,7 @@ export default function Footer() {
               <Link href="/gardens">All Gardens</Link>
               <Link href="/nurseries">Local Nurseries</Link>
               <Link href="/guides">Gardening Guides</Link>
-              <Link href="/gear">Recommended Gear</Link>
+              <Link href="/potting-shed">The Potting Shed</Link>
               <Link href="/newsletter">Newsletter</Link>
             </div>
             <div className={styles.column}>
@@ -43,7 +43,7 @@ export default function Footer() {
       </div>
       <div className={styles.bottom}>
         <p className={styles.disclosure}>
-          As an Amazon Associate I earn from qualifying purchases.
+          As an Amazon Associate, ATL Gardens earns from qualifying purchases.
         </p>
         <p>&copy; {new Date().getFullYear()} Atlanta Community Gardens Directory. All rights reserved.</p>
       </div>

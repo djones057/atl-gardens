@@ -74,9 +74,10 @@ export default function NewsletterPage() {
         <h2>Support the directory</h2>
         <p>
           ATL Community Gardens is free to use and always will be. We cover our costs through{" "}
-          <Link href="/gear" className={styles.link}>Amazon affiliate commissions</Link> on our
-          gear page and <Link href="/nurseries" className={styles.link}>featured partner</Link>{" "}
-          placements for local nurseries. If you&rsquo;d like to support us beyond that,{" "}
+          <Link href="/potting-shed" className={styles.link}>Amazon affiliate commissions</Link>{" "}
+          in The Potting Shed and{" "}
+          <Link href="/nurseries" className={styles.link}>featured partner</Link> placements for
+          local nurseries. If you&rsquo;d like to support us beyond that,{" "}
           sharing the site with a fellow Atlanta gardener is the best thing you can do.
         </p>
         <p>

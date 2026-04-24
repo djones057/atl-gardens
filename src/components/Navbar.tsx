@@ -14,7 +14,7 @@ export default function Navbar() {
           <Link href="/gardens" className={styles.link}>Directory</Link>
           <Link href="/nurseries" className={styles.link}>Nurseries</Link>
           <Link href="/guides" className={styles.link}>Guides</Link>
-          <Link href="/gear" className={styles.link}>Gear</Link>
+          <Link href="/potting-shed" className={styles.link}>The Potting Shed</Link>
         </div>
       </nav>
     </header>

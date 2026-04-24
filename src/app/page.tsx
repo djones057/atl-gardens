@@ -2,8 +2,8 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { gardens } from "@/data/gardens";
-import { products } from "@/data/products";
-import AffiliateCarousel from "@/components/AffiliateCarousel";
+import { products as shedProducts } from "@/lib/potting-shed-data";
+import ProductCard from "@/components/ProductCard";
 import { plantingCalendar } from "@/data/plantingCalendar";
 import { ArrowRight, MapPin, CheckCircle2, Clock, Ban, HelpCircle } from "lucide-react";
 import type { Garden } from "@/types";
@@ -216,10 +216,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── GEAR ─── */}
-      <div className="container">
-        <AffiliateCarousel products={products.slice(0, 4)} />
-      </div>
+      {/* ─── THE POTTING SHED ─── */}
+      <section className={`container ${styles.shed}`}>
+        <div className={styles.shedHeader}>
+          <div>
+            <span className={styles.sectionLabel}>The Potting Shed</span>
+            <h2 className={styles.shedTitle}>Gear We Trust</h2>
+            <p className={styles.shedSubtitle}>
+              Curated for Atlanta&rsquo;s climate and community gardens.
+            </p>
+          </div>
+          <Link href="/potting-shed" className={styles.viewAll}>
+            Browse The Potting Shed <ArrowRight size={14} />
+          </Link>
+        </div>
+
+        <div className={styles.shedGrid}>
+          {shedProducts.slice(0, 6).map((p) => (
+            <ProductCard key={p.id} product={p} />
+          ))}
+        </div>
+      </section>
     </>
   );
 }

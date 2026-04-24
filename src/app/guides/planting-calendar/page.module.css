@@ -262,3 +262,39 @@
   border-radius: var(--radius-md);
   padding: 1.25rem 1.5rem;
 }
+
+.monthlyPicks {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.monthlyPicksLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-secondary);
+  border-top: 2px solid var(--text-primary);
+  padding-top: 0.65rem;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.monthlyPicksGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .monthlyPicksGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .monthlyPicksGrid {
+    grid-template-columns: 1fr;
+  }
+}

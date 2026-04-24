@@ -2,7 +2,11 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Sprout, MapPin, Calendar, Scissors, ChevronLeft } from "lucide-react";
 import { plantingCalendar } from "@/data/plantingCalendar";
+import { products as shedProducts } from "@/lib/potting-shed-data";
+import ProductCard from "@/components/ProductCard";
 import styles from "./page.module.css";
+
+const APRIL_PICK_IDS = ["monterey-bt", "neem-oil-concentrate", "drip-irrigation-kit"];
 
 export const metadata: Metadata = {
   title: "Atlanta Planting Calendar (Zone 7b/8a) | ATL Community Gardens",
@@ -119,6 +123,19 @@ export default function PlantingCalendarPage() {
                 {m.tasks.map((t) => <li key={t}>{t}</li>)}
               </ul>
             </div>
+
+            {m.month === "April" && (
+              <div className={styles.monthlyPicks}>
+                <h3 className={styles.monthlyPicksLabel}>What you need this month</h3>
+                <div className={styles.monthlyPicksGrid}>
+                  {shedProducts
+                    .filter((p) => APRIL_PICK_IDS.includes(p.id))
+                    .map((p) => (
+                      <ProductCard key={p.id} product={p} />
+                    ))}
+                </div>
+              </div>
+            )}
           </section>
         ))}
       </div>

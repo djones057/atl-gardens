@@ -1,6 +1,8 @@
 import { gardens } from "@/data/gardens";
-import { products } from "@/data/products";
-import AffiliateCarousel from "@/components/AffiliateCarousel";
+import { products as shedProducts } from "@/lib/potting-shed-data";
+import ProductCard from "@/components/ProductCard";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import styles from "./page.module.css";
 import { MapPin, Globe, CheckCircle2, Clock, Sprout, HelpCircle, Info, Ban } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -223,7 +225,17 @@ export default async function GardenDetail({ params }: { params: Promise<{ id: s
       </div>
 
       <div className={styles.affiliateSection}>
-        <AffiliateCarousel products={products.slice(0, 4)} />
+        <div className={styles.affiliateHeader}>
+          <h2 className={styles.affiliateTitle}>From The Potting Shed</h2>
+          <Link href="/potting-shed" className={styles.affiliateViewAll}>
+            Browse all <ArrowRight size={14} />
+          </Link>
+        </div>
+        <div className={styles.affiliateGrid}>
+          {shedProducts.slice(0, 3).map((p) => (
+            <ProductCard key={p.id} product={p} />
+          ))}
+        </div>
       </div>
     </div>
   );

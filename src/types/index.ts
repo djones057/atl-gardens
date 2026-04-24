@@ -16,16 +16,6 @@ export interface Garden {
   verified?: boolean;
 }
 
-export interface AffiliateProduct {
-  id: string;
-  title: string;
-  description: string;
-  category: "Tools" | "Seeds" | "Gear" | "Books";
-  imageUrl: string;
-  affiliateUrl: string;
-  price: string;
-}
-
 export interface Nursery {
   id: string;
   name: string;

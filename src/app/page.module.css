@@ -896,6 +896,92 @@
 
 
 /* ─────────────────────────────────────────
+   NEWSLETTER — clay card with concentric circles
+───────────────────────────────────────── */
+.newsSection {
+  border-bottom: 0;
+}
+
+.news {
+  background: var(--clay);
+  color: var(--paper);
+  border-radius: var(--radius-xl);
+  padding: 72px 56px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.news::before {
+  content: "";
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 280px;
+  height: 280px;
+  border: 1px solid oklch(0.95 0.02 60 / 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.news::after {
+  content: "";
+  position: absolute;
+  right: -120px;
+  top: -120px;
+  width: 400px;
+  height: 400px;
+  border: 1px solid oklch(0.95 0.02 60 / 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.newsTitle {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--paper);
+  font-weight: 400;
+}
+
+.newsTitle em {
+  font-style: italic;
+}
+
+.newsLede {
+  font-size: 16px;
+  opacity: 0.92;
+  margin-top: 14px;
+  max-width: 40ch;
+  line-height: 1.5;
+}
+
+.newsTiny {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  margin-top: 14px;
+  opacity: 0.85;
+  text-transform: uppercase;
+}
+
+@media (max-width: 960px) {
+  .news {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 48px 32px;
+  }
+  .newsTitle {
+    font-size: 36px;
+  }
+}
+
+
+/* ─────────────────────────────────────────
    SHARED LABELS
 ───────────────────────────────────────── */
 .sectionLabel {

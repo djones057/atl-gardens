@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import { gardens } from "@/data/gardens";
+import HomepageNewsletter from "@/components/HomepageNewsletter";
 
 type DirTag = { label: string; variant?: "open" | "full" };
 type DirEntry = {
@@ -513,6 +514,25 @@ export default function Home() {
                 <p className={styles.journalByline}>{j.byline}</p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── NEWSLETTER ─── */}
+      <section className={`${styles.sec} ${styles.newsSection}`}>
+        <div className="shell">
+          <div className={styles.news}>
+            <div>
+              <h2 className={styles.newsTitle}>
+                A <em>letter</em> from the garden, once a month.
+              </h2>
+              <p className={styles.newsLede}>
+                What&rsquo;s ripe, what&rsquo;s rotting, which gardens just opened new
+                plots, and one seasonal recipe. Free, no filler.
+              </p>
+              <div className={styles.newsTiny}>· 3,200 readers · Unsubscribe anytime ·</div>
+            </div>
+            <HomepageNewsletter />
           </div>
         </div>
       </section>

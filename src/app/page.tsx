@@ -1,34 +1,48 @@
 import styles from "./page.module.css";
 import Link from "next/link";
-import Image from "next/image";
-import { gardens } from "@/data/gardens";
 import { products as shedProducts } from "@/lib/potting-shed-data";
 import ProductCard from "@/components/ProductCard";
 import { plantingCalendar } from "@/data/plantingCalendar";
-import { ArrowRight, MapPin, CheckCircle2, Clock, Ban, HelpCircle } from "lucide-react";
-import type { Garden } from "@/types";
+import { ArrowRight } from "lucide-react";
 
-function AvailabilityBadge({ garden }: { garden: Garden }) {
-  const isVerified = garden.verified !== false;
-  if (!isVerified) return <span className={styles.badge} data-status="Unverified">Listing</span>;
-  const icons: Record<string, React.ReactNode> = {
-    Available: <CheckCircle2 size={12} />,
-    Waitlist: <Clock size={12} />,
-    Full: <Ban size={12} />,
-    Unknown: <HelpCircle size={12} />,
-  };
-  return (
-    <span className={styles.badge} data-status={garden.plotAvailability}>
-      {icons[garden.plotAvailability]}
-      {garden.plotAvailability}
-    </span>
-  );
-}
+type DirTag = { label: string; variant?: "open" | "full" };
+type DirEntry = {
+  idx: string;
+  name: string;
+  meta: string[];
+  tags: DirTag[];
+};
+
+const DIR_ENTRIES: DirEntry[] = [
+  { idx: "001", name: "Wylde Center — Oakhurst", meta: ["Decatur", "2 acres"], tags: [{ label: "Plots open" }, { label: "Volunteers" }] },
+  { idx: "002", name: "Truly Living Well", meta: ["Collegetown", "Urban farm"], tags: [{ label: "CSA shares" }] },
+  { idx: "003", name: "Kirkwood Community Garden", meta: ["Kirkwood", "0.4 acres"], tags: [{ label: "Waitlist", variant: "full" }] },
+  { idx: "004", name: "Old Fourth Ward Plots", meta: ["O4W", "24 beds"], tags: [{ label: "Plots open" }] },
+  { idx: "005", name: "Bankhead Seed & Soil", meta: ["Bankhead", "Pollinator-focused"], tags: [{ label: "Workshops" }] },
+  { idx: "006", name: "Cascade Springs Collective", meta: ["Cascade", "Members only"], tags: [{ label: "Kids programs" }] },
+  { idx: "007", name: "Grant Park Victory Garden", meta: ["Grant Park", "Heirloom seeds"], tags: [{ label: "Volunteers" }] },
+  { idx: "008", name: "West End Roots", meta: ["West End", "Teaching garden"], tags: [{ label: "Plots open" }] },
+  { idx: "009", name: "Lakewood Orchard", meta: ["Lakewood", "Fruit trees"], tags: [{ label: "Harvest days" }] },
+];
+
+const MAP_PINS = [
+  { x: 150, y: 140, label: "Bankhead", anchor: "start", variant: "open" },
+  { x: 240, y: 170, label: "Old Fourth Ward", anchor: "start", variant: "open" },
+  { x: 260, y: 220, label: "Kirkwood", anchor: "start", variant: "open" },
+  { x: 290, y: 260, label: "E. Atlanta", anchor: "start", variant: "members" },
+  { x: 180, y: 240, label: "West End", anchor: "end", tx: 136, ty: 232, variant: "open" },
+  { x: 130, y: 290, label: "Cascade", anchor: "end", tx: 118, ty: 294, variant: "members" },
+  { x: 220, y: 110, label: "Buckhead", anchor: "start", variant: "open" },
+  { x: 310, y: 150, label: "Brookhaven", anchor: "start", variant: "open" },
+  { x: 320, y: 330, label: "Decatur", anchor: "start", variant: "open" },
+  { x: 110, y: 200, label: "Grove Park", anchor: "end", tx: 98, ty: 204, variant: "open" },
+  { x: 200, y: 310, label: "Capitol View", anchor: "start", variant: "members" },
+  { x: 250, y: 360, label: "Lakewood", anchor: "start", variant: "open" },
+] as const;
 
 export default function Home() {
   const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
   const thisMonth = plantingCalendar.find((m) => m.month === currentMonth);
-  const [hero, ...side] = gardens.slice(0, 3);
 
   return (
     <>
@@ -162,78 +176,130 @@ export default function Home() {
         </section>
       )}
 
-      {/* ─── FEATURED GARDENS ─── */}
-      <section className={`container ${styles.gardens}`}>
-        <div className={styles.gardensHeader}>
-          <span className={styles.sectionLabel}>Featured Gardens</span>
-          <Link href="/gardens" className={styles.viewAll}>
-            View all {gardens.length} <ArrowRight size={14} />
-          </Link>
-        </div>
+      {/* ─── 01 / DIRECTORY ─── */}
+      <section id="directory" className={styles.sec}>
+        <div className="shell">
+          <div className={styles.secHead}>
+            <div>
+              <div className={styles.secNum}>01 / Directory</div>
+              <h2 className={styles.secTitle}>
+                Browse all <em>gardens</em> across the city.
+              </h2>
+            </div>
+            <div className={styles.dirHeadRight}>
+              <p className={styles.secIntro}>
+                Filter by neighborhood, access policy, or what&rsquo;s currently in the
+                ground. Tap a pin to see hours, organizers, and how to get involved.
+              </p>
+              <div className={styles.dirToggle} role="tablist" aria-label="Directory view">
+                <button type="button" role="tab" aria-selected="true" className={styles.dirToggleOn}>
+                  Map + list
+                </button>
+                <button type="button" role="tab" aria-selected="false">
+                  Grid
+                </button>
+                <button type="button" role="tab" aria-selected="false">
+                  By neighborhood
+                </button>
+              </div>
+            </div>
+          </div>
 
-        <div className={styles.gardensGrid}>
-          {/* Hero garden — large editorial card */}
-          <Link href={`/gardens/${hero.id}`} className={styles.gardenHero}>
-            <div className={styles.gardenHeroImgWrap}>
-              {hero.imageUrl && (
-                <Image
-                  src={hero.imageUrl}
-                  alt={hero.name}
-                  fill
-                  sizes="(min-width: 1024px) 55vw, 100vw"
-                  className={styles.gardenHeroImgEl}
+          <div className={styles.dirGrid}>
+            <div className={styles.map}>
+              <span className={styles.mapLabel}>Map · metro ATL</span>
+              <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <pattern id="mapGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="oklch(0.83 0.03 130)" strokeWidth="0.5" />
+                  </pattern>
+                </defs>
+                <rect width="400" height="420" fill="url(#mapGrid)" />
+                <ellipse
+                  cx="200"
+                  cy="210"
+                  rx="150"
+                  ry="160"
+                  fill="none"
+                  stroke="oklch(0.55 0.02 140)"
+                  strokeWidth="1.2"
+                  strokeDasharray="3 3"
                 />
-              )}
+                <path
+                  d="M 200 40 Q 180 180 200 210 Q 220 250 200 380"
+                  stroke="oklch(0.55 0.02 140)"
+                  strokeWidth="1.5"
+                  fill="none"
+                />
+                <path
+                  d="M 50 220 Q 200 200 350 230"
+                  stroke="oklch(0.55 0.02 140)"
+                  strokeWidth="1.5"
+                  fill="none"
+                />
+                <g fontFamily="var(--font-mono), JetBrains Mono, monospace" fontSize="9" fill="oklch(0.22 0.02 140)">
+                  {MAP_PINS.map((p) => (
+                    <g key={p.label}>
+                      <circle
+                        cx={p.x}
+                        cy={p.y}
+                        r="6"
+                        fill={p.variant === "members" ? "oklch(0.58 0.12 45)" : "oklch(0.35 0.06 145)"}
+                      />
+                      <text
+                        x={"tx" in p ? p.tx : p.x + 12}
+                        y={"ty" in p ? p.ty : p.y + 3}
+                        textAnchor={p.anchor}
+                      >
+                        {p.label}
+                      </text>
+                    </g>
+                  ))}
+                </g>
+              </svg>
+              <div className={styles.mapLegend}>
+                <span>
+                  <i className={styles.legendDotOpen} aria-hidden="true" /> Open to public
+                </span>
+                <span>
+                  <i className={styles.legendDotMembers} aria-hidden="true" /> Members only
+                </span>
+                <span>
+                  <i className={styles.legendDotInterstate} aria-hidden="true" /> Interstate
+                </span>
+              </div>
             </div>
-            <div className={styles.gardenHeroBody}>
-              <AvailabilityBadge garden={hero} />
-              <h3 className={styles.gardenHeroName}>{hero.name}</h3>
-              <p className={styles.gardenHeroLoc}>
-                <MapPin size={13} aria-hidden="true" />
-                {hero.neighborhood}, {hero.zipCode}
-              </p>
-              <p className={styles.gardenHeroDesc}>
-                {hero.description.length > 130
-                  ? `${hero.description.slice(0, 130).trimEnd()}…`
-                  : hero.description}
-              </p>
-              <span className={styles.gardenHeroLink}>
-                View garden <ArrowRight size={14} />
-              </span>
-            </div>
-          </Link>
 
-          {/* Side gardens — editorial list cards */}
-          <div className={styles.gardenSide}>
-            {side.map((g, i) => (
-              <Link key={g.id} href={`/gardens/${g.id}`} className={styles.gardenCard}>
-                <span className={styles.gardenCardNum}>0{i + 2}</span>
-                <div className={styles.gardenCardBody}>
-                  <AvailabilityBadge garden={g} />
-                  <h3 className={styles.gardenCardName}>{g.name}</h3>
-                  <p className={styles.gardenCardLoc}>
-                    <MapPin size={12} aria-hidden="true" />
-                    {g.neighborhood}, {g.zipCode}
-                  </p>
-                  {g.amenities.length > 0 && (
-                    <p className={styles.gardenCardAmenities}>
-                      {g.amenities.slice(0, 3).join(" · ")}
-                    </p>
-                  )}
-                </div>
-                {g.imageUrl && (
-                  <div className={styles.gardenCardThumb}>
-                    <Image
-                      src={g.imageUrl}
-                      alt={g.name}
-                      fill
-                      sizes="96px"
-                      className={styles.gardenCardThumbImg}
-                    />
+            <div className={styles.gardenList}>
+              {DIR_ENTRIES.map((g) => (
+                <Link key={g.idx} href="/gardens" className={styles.gardenRow}>
+                  <span className={styles.gardenIdx}>{g.idx}</span>
+                  <div>
+                    <div className={styles.gardenName}>{g.name}</div>
+                    <div className={styles.gardenMeta}>
+                      {g.meta.map((m, i) => (
+                        <span key={`${m}-${i}`}>{m}</span>
+                      ))}
+                      {g.tags.map((t) => (
+                        <span
+                          key={t.label}
+                          className={`${styles.tag} ${t.variant === "full" ? styles.tagFull : ""}`}
+                        >
+                          {t.label}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                )}
-              </Link>
-            ))}
+                  <span className={styles.gardenArrow} aria-hidden="true">→</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.dirMore}>
+            <Link href="/gardens" className={styles.dirMoreLink}>
+              See all 142 gardens →
+            </Link>
           </div>
         </div>
       </section>
